@@ -1,0 +1,506 @@
+[
+  {
+    "id": "PRE_RAIN_01",
+    "type": "PRE",
+    "category": "HEAVY_RAIN",
+    "title": "Flash Flood Dynamics in Urbanized Campus Terrain",
+    "question": "During torrential afternoon downpours, low-lying campus access points like PJ Gate\nexperience rapid surface waterlogging primarily because:",
+    "options": [
+      {
+        "id": "A",
+        "text": "Soil absorption suddenly halts completely"
+      },
+      {
+        "id": "B",
+        "text": "High surface runoff exceeds drainage capacity"
+      },
+      {
+        "id": "C",
+        "text": "Atmospheric pressure forces water upward"
+      },
+      {
+        "id": "D",
+        "text": "Underground pipes reverse direction instantly"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Impervious urban surfaces (asphalt roads, paved car parks) prevent natural infiltration, causing\nprecipitation volume to rapidly exceed storm drainage discharge thresholds (NADMA, 2023).",
+    "linkedLearningUnitId": "RAIN_02"
+  },
+  {
+    "id": "PRE_RAIN_02",
+    "type": "PRE",
+    "category": "HEAVY_RAIN",
+    "title": "Safe Pedestrian Protocol for Standing Water",
+    "question": "When walking between residential colleges, what is the critical threshold at which moving\nwater can knock down an adult?",
+    "options": [
+      {
+        "id": "A",
+        "text": "15 cm (6 inches) of moving water"
+      },
+      {
+        "id": "B",
+        "text": "45 cm (18 inches) of moving water"
+      },
+      {
+        "id": "C",
+        "text": "60 cm (24 inches) of moving water"
+      },
+      {
+        "id": "D",
+        "text": "Water level must reach waist height"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "As little as 15 cm of moving floodwater exerts substantial lateral kinetic force capable of sweeping an\nadult off their feet, concealing open drains and missing manhole covers (FEMA / Ready.gov, 2022).",
+    "linkedLearningUnitId": "RAIN_04"
+  },
+  {
+    "id": "PRE_RAIN_03",
+    "type": "PRE",
+    "category": "HEAVY_RAIN",
+    "title": "Official Early Warning Interpretations",
+    "question": "When MET Malaysia issues an 'Orange' (Severe) Continuous Rain Warning, what does it\nsignify for the Klang Valley?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Light drizzle anticipated intermittently"
+      },
+      {
+        "id": "B",
+        "text": "Unprecedented monsoon flooding guaranteed"
+      },
+      {
+        "id": "C",
+        "text": "Continuous rain expected with ≥60mm in 6 hrs"
+      },
+      {
+        "id": "D",
+        "text": "Immediate campus evacuation order"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": "An Orange Continuous Rain Warning indicates heavy rainfall exceeding 60 mm within a 6-hour window,\nrequiring proactive safety precautions and trip rescheduling (MET Malaysia, 2024).\nUM ClimateReady • Module 1 Assessment Bank\nPage 1 of 5",
+    "linkedLearningUnitId": "RAIN_03"
+  },
+  {
+    "id": "PRE_HEAT_01",
+    "type": "PRE",
+    "category": "EXTREME_HEAT",
+    "title": "Heat Index & Relative Humidity Effects",
+    "question": "Why does an ambient temperature of 33°C in Kuala Lumpur feel significantly more\noppressive than the same temperature in a dry climate?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Solar UV radiation is doubled in tropical zones"
+      },
+      {
+        "id": "B",
+        "text": "High humidity impedes sweat evaporative\ncooling"
+      },
+      {
+        "id": "C",
+        "text": "Tropical air contains less breathable oxygen"
+      },
+      {
+        "id": "D",
+        "text": "Higher air density traps solar heat near the skin"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "High atmospheric relative humidity suppresses sweat vaporization—the human body's primary\nthermoregulatory cooling mechanism—elevating physiological strain (MOH Malaysia, 2023).",
+    "linkedLearningUnitId": "HEAT_01"
+  },
+  {
+    "id": "PRE_HEAT_02",
+    "type": "PRE",
+    "category": "EXTREME_HEAT",
+    "title": "Clinical Discrimination: Heat Exhaustion vs. Heat Stroke",
+    "question": "Which of the following symptoms distinguishes a life-threatening Heat Stroke from Heat\nExhaustion during outdoor campus transit?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Heavy perspiration and clammy skin"
+      },
+      {
+        "id": "B",
+        "text": "Altered mental state / confusion and hot, dry\nskin"
+      },
+      {
+        "id": "C",
+        "text": "Mild muscle cramping in legs"
+      },
+      {
+        "id": "D",
+        "text": "Dizziness alleviated by seated rest"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Heat stroke causes core body temperature to surge (>40°C), triggering nervous system dysfunction\n(confusion, ataxia, seizures) and cessation of sweating, demanding immediate medical resuscitation (WHO, 2023).",
+    "linkedLearningUnitId": "HEAT_02"
+  },
+  {
+    "id": "PRE_HEAT_03",
+    "type": "PRE",
+    "category": "EXTREME_HEAT",
+    "title": "Urban Heat Island (UHI) Mitigation on Campus",
+    "question": "To minimize personal heat strain when walking between residential colleges and\nfaculties during peak midday hours, students should:",
+    "options": [
+      {
+        "id": "A",
+        "text": "Increase walking pace to minimize total outdoor\ntime"
+      },
+      {
+        "id": "B",
+        "text": "Utilize continuous tree-canopied corridors and\nhydrate"
+      },
+      {
+        "id": "C",
+        "text": "Drink cold iced beverages with high sugar content"
+      },
+      {
+        "id": "D",
+        "text": "Wear tightly woven dark clothing to reflect radiation"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Shaded green canopy paths reduce radiant surface exposure by up to 10–15°C compared to open\nasphalt surfaces, preserving body hydration (IPCC AR6 WGII, 2022).",
+    "linkedLearningUnitId": "HEAT_04"
+  },
+  {
+    "id": "PRE_HAZE_01",
+    "type": "PRE",
+    "category": "HAZE_AIR_QUALITY",
+    "title": "Primary Aerosol Threat in Transboundary Haze",
+    "question": "What pollutant in regional biomass haze is considered the greatest hazard to human\nrespiratory and cardiovascular health?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Ground-level sulfur hexafluoride (SF6)"
+      },
+      {
+        "id": "B",
+        "text": "Coarse dust particulate matter (>10 µm)"
+      },
+      {
+        "id": "C",
+        "text": "Fine Particulate Matter ≤ 2.5 µm (PM2.5)"
+      },
+      {
+        "id": "D",
+        "text": "Atmospheric nitrogen gas (N2)"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": "PM2.5 particles penetrate deeply into lung alveoli and cross into the bloodstream, triggering systemic\ninflammatory and cardiovascular events (Department of Environment Malaysia, 2023).\nUM ClimateReady • Module 1 Assessment Bank\nPage 2 of 5",
+    "linkedLearningUnitId": "HAZE_01"
+  },
+  {
+    "id": "PRE_HAZE_02",
+    "type": "PRE",
+    "category": "HAZE_AIR_QUALITY",
+    "title": "Malaysia Air Pollutant Index (API) Thresholds",
+    "question": "According to the APIMS standard, an Air Pollutant Index (API) reading between 101 and\n200 is classified as:",
+    "options": [
+      {
+        "id": "A",
+        "text": "Moderate (Standard outdoor activity permitted)"
+      },
+      {
+        "id": "B",
+        "text": "Unhealthy (Sensitive groups should restrict\noutdoor exposure)"
+      },
+      {
+        "id": "C",
+        "text": "Very Unhealthy (All vigorous outdoor activity\nceased)"
+      },
+      {
+        "id": "D",
+        "text": "Hazardous (Immediate lockdown of public areas)"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "API 101–200 signifies the 'Unhealthy' band where people with respiratory ailments experience\nworsening symptoms and the general public should limit prolonged physical exertion outdoors (Department of\nEnvironment Malaysia, 2023).",
+    "linkedLearningUnitId": "HAZE_02"
+  },
+  {
+    "id": "PRE_HAZE_03",
+    "type": "PRE",
+    "category": "HAZE_AIR_QUALITY",
+    "title": "Effective Respiratory Protection Standards",
+    "question": "When walking outdoors during an Unhealthy haze event (API 150+), which protective face\ncovering is certified to filter PM2.5?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Standard 3-ply surgical mask"
+      },
+      {
+        "id": "B",
+        "text": "Washable single-layer cotton bandana"
+      },
+      {
+        "id": "C",
+        "text": "Well-fitted particulate respirator (N95 / KF94 /\nKN95)"
+      },
+      {
+        "id": "D",
+        "text": "Double-layered silk gaiter"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": "Surgical and cloth masks allow fine sub-micron particulates to leak around loose edges. Particulate\nrespirators (N95/KF94) provide sealed electrostatic filtration against PM2.5 (MOH Malaysia, 2023).",
+    "linkedLearningUnitId": "HAZE_04"
+  },
+  {
+    "id": "POST_RAIN_01",
+    "type": "POST",
+    "category": "HEAVY_RAIN",
+    "title": "Vehicle Hydroplaning & Submergence Risks",
+    "question": "When driving or commuting across campus during a flash flood, what depth of flowing\nwater can float or carry away most passenger cars?",
+    "options": [
+      {
+        "id": "A",
+        "text": "10 cm (4 inches)"
+      },
+      {
+        "id": "B",
+        "text": "30 cm (12 inches)"
+      },
+      {
+        "id": "C",
+        "text": "75 cm (30 inches)"
+      },
+      {
+        "id": "D",
+        "text": "Water must submerge the vehicle hood"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Approximately 30 cm (1 foot) of moving water exerts sufficient buoyant force to lift and displace most\nlight passenger vehicles and subcompact cars (FEMA / Ready.gov, 2022).",
+    "linkedLearningUnitId": "RAIN_02"
+  },
+  {
+    "id": "POST_RAIN_02",
+    "type": "POST",
+    "category": "HEAVY_RAIN",
+    "title": "Electrical Hazards Post-Flood Event",
+    "question": "After a severe storm recedes near faculty basements, what immediate secondary hazard\nshould students avoid?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Submerged electrical conduits, junction boxes,\nand fallen wires"
+      },
+      {
+        "id": "B",
+        "text": "Sudden decreases in outdoor air pressure"
+      },
+      {
+        "id": "C",
+        "text": "Rapid depletion of local ground nitrogen"
+      },
+      {
+        "id": "D",
+        "text": "Elevated ozone concentrations in soil puddles"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Floodwaters conduct electric currents from damaged feeder pillars and low-voltage substations,\ncreating fatal electrocution hazards without visible sparks (NADMA, 2023).\nUM ClimateReady • Module 1 Assessment Bank\nPage 3 of 5",
+    "linkedLearningUnitId": "RAIN_04"
+  },
+  {
+    "id": "POST_RAIN_03",
+    "type": "POST",
+    "category": "HEAVY_RAIN",
+    "title": "Early Warning Color Coding Hierarchy",
+    "question": "Under MET Malaysia's continuous rain advisory system, a 'Red' (Danger) Warning\nexplicitly alerts the community that:",
+    "options": [
+      {
+        "id": "A",
+        "text": "Light drizzle will persist for over 48 hours"
+      },
+      {
+        "id": "B",
+        "text": "A tropical cyclone has formed directly over Kuala\nLumpur"
+      },
+      {
+        "id": "C",
+        "text": "Continuous heavy rain exceeding 240mm in 24\nhrs is imminent"
+      },
+      {
+        "id": "D",
+        "text": "Academic activities are permanently shifted online"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": "The Red warning is MET Malaysia's highest alert tier, denoting rainfall accumulation projected to\nexceed 240 mm within 24 hours (MET Malaysia, 2024).\nPOST",
+    "linkedLearningUnitId": "RAIN_03"
+  },
+  {
+    "id": "POST_HEAT_01",
+    "type": "POST",
+    "category": "EXTREME_HEAT",
+    "title": "First Response for Severe Heat Stress",
+    "question": "If a peer collapses during outdoor sports on campus displaying hot, dry skin and delirium,\nyour immediate first-aid priority while calling emergency services is:",
+    "options": [
+      {
+        "id": "A",
+        "text": "Force-feed large volumes of electrolyte liquid"
+      },
+      {
+        "id": "B",
+        "text": "Move them to shade and initiate active cooling\nwith cold water/ice packs"
+      },
+      {
+        "id": "C",
+        "text": "Cover them with an emergency thermal foil blanket"
+      },
+      {
+        "id": "D",
+        "text": "Administer oral paracetamol or aspirin"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Unconscious or delirious individuals must never be forced to drink due to aspiration risks. Immediate\npassive and active evaporative cooling (ice on groin/neck/axilla) halts fatal brain cell necrosis (WHO, 2023).",
+    "linkedLearningUnitId": "HEAT_03"
+  },
+  {
+    "id": "POST_HEAT_02",
+    "type": "POST",
+    "category": "EXTREME_HEAT",
+    "title": "Hydration Physiology & Diuretics",
+    "question": "Why should students avoid relying on heavily caffeinated energy drinks to combat\nafternoon fatigue during heatwaves?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Caffeine permanently stops internal body sweating"
+      },
+      {
+        "id": "B",
+        "text": "High caffeine has mild diuretic effects and\nelevates metabolic rate"
+      },
+      {
+        "id": "C",
+        "text": "Caffeine prevents cellular uptake of glucose"
+      },
+      {
+        "id": "D",
+        "text": "Energy drinks destroy salt balances in the stomach\nlining"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Excessive caffeine accelerates fluid loss through mild diuresis while raising cardiac workload and\ninternal thermal load, compounding dehydration (MOH Malaysia, 2023).",
+    "linkedLearningUnitId": "HEAT_03"
+  },
+  {
+    "id": "POST_HEAT_03",
+    "type": "POST",
+    "category": "EXTREME_HEAT",
+    "title": "Vulnerable Populations & Acclimatization",
+    "question": "How long does physiological heat acclimatization typically take for incoming students\nnewly arriving to a hot, humid tropical environment?",
+    "options": [
+      {
+        "id": "A",
+        "text": "24 to 48 hours"
+      },
+      {
+        "id": "B",
+        "text": "10 to 14 days of gradual daily outdoor exposure"
+      },
+      {
+        "id": "C",
+        "text": "Exactly 6 months"
+      },
+      {
+        "id": "D",
+        "text": "Tropical acclimatization is biologically impossible"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Full circulatory and thermoregulatory adaptation (lower heart rate, increased sweat efficiency,\nexpanded plasma volume) requires approximately 10 to 14 days of progressive exposure (WHO, 2023).\nUM ClimateReady • Module 1 Assessment Bank\nPage 4 of 5\n\nPOST",
+    "linkedLearningUnitId": "HEAT_04"
+  },
+  {
+    "id": "POST_HAZE_01",
+    "type": "POST",
+    "category": "HAZE_AIR_QUALITY",
+    "title": "Indoor Air Quality Management During High API",
+    "question": "To maintain safe indoor air quality in residential college rooms during severe\ntransboundary haze, residents should:",
+    "options": [
+      {
+        "id": "A",
+        "text": "Keep all windows wide open to circulate natural\noutdoor breezes"
+      },
+      {
+        "id": "B",
+        "text": "Keep windows and doors tightly sealed and set\nair conditioning to internal recirculate"
+      },
+      {
+        "id": "C",
+        "text": "Burn scented candles to deodorize smoky air\nparticles"
+      },
+      {
+        "id": "D",
+        "text": "Use standard ceiling fans with open balcony doors"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Closing building apertures and recirculating internal cooled air prevents exterior particulate ingress.\nBurning incense or candles introduces additional dangerous volatile organic compounds (Department of\nEnvironment Malaysia, 2023).",
+    "linkedLearningUnitId": "HAZE_03"
+  },
+  {
+    "id": "POST_HAZE_02",
+    "type": "POST",
+    "category": "HAZE_AIR_QUALITY",
+    "title": "Meteorological Influence on Haze Dispersion",
+    "question": "Which seasonal meteorological phenomenon is predominantly responsible for\ntransporting regional biomass haze towards Peninsular Malaysia?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Northeast Monsoon (NEM) cold surge winds"
+      },
+      {
+        "id": "B",
+        "text": "Southwest Monsoon (SWM) prevailing winds"
+      },
+      {
+        "id": "C",
+        "text": "Inter-monsoon localized convective storms"
+      },
+      {
+        "id": "D",
+        "text": "Polar vortex displacement winds"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "The Southwest Monsoon (typically June to September) creates dry atmospheric conditions and steady\nsouth-westerly winds that carry smoke plumes across the Strait of Malacca (MET Malaysia, 2024).",
+    "linkedLearningUnitId": "HAZE_02"
+  },
+  {
+    "id": "POST_HAZE_03",
+    "type": "POST",
+    "category": "HAZE_AIR_QUALITY",
+    "title": "High-Risk Student Demographics",
+    "question": "When the campus API crosses 150 (Unhealthy), which student sub-population requires\npriority physical activity restriction?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Individuals with pre-existing asthma, chronic\nbronchitis, or cardiovascular disease"
+      },
+      {
+        "id": "B",
+        "text": "Students with contact lenses only"
+      },
+      {
+        "id": "C",
+        "text": "Only varsity athletes undergoing competitive trials"
+      },
+      {
+        "id": "D",
+        "text": "Only students living in ground-floor dormitories"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Microscopic aerosols irritate hyperreactive bronchial pathways, triggering severe bronchospasms and\nacute exacerbations in asthmatic individuals (MOH Malaysia, 2023).",
+    "linkedLearningUnitId": "HAZE_03"
+  }
+]

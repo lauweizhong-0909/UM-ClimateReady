@@ -1,0 +1,134 @@
+[
+  {
+    "id": "RES_RAIN_01",
+    "name": "UM Security Division (Bahagian Keselamatan UM - BKU)",
+    "category": "HEAVY_RAIN",
+    "shortDescription": "Primary 24/7 campus emergency operations control center. Dispatches officers to blocked access gates (PJ Gate / KL Gate), manages storm traffic diversions, and assists stranded students during heavy downpours.",
+    "sourceOrganization": "Universiti Malaya (BKU)",
+    "officialUrl": "https://security.um.edu.my",
+    "phoneNumber": "+603-7967 7070",
+    "lastVerifiedAt": "2026-11-01",
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "RES_RAIN_02",
+    "name": "UM Department of Development & Estate Maintenance (JPPHB)",
+    "category": "HEAVY_RAIN",
+    "shortDescription": "Handles physical estate infrastructure, drain unclogging, retention basin maintenance, flood barrier deployments, and electrical substation safety inspections across faculty basements.",
+    "sourceOrganization": "Universiti Malaya (JPPHB)",
+    "officialUrl": "https://jpphb.um.edu.my",
+    "phoneNumber": "+603-7967 3254",
+    "lastVerifiedAt": "2026-11-01",
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "RES_RAIN_03",
+    "name": "NADMA Malaysia (National Disaster Management Agency)",
+    "category": "HEAVY_RAIN",
+    "shortDescription": "National portal providing real-time flood situation maps, active temporary evacuation center (PPS) statuses via InfoBencanaJKM, and standard civil defense flood safety guidelines.",
+    "sourceOrganization": "Prime Minister's Department, Malaysia",
+    "officialUrl": "https://www.nadma.gov.my",
+    "phoneNumber": "+603-8870 4848",
+    "lastVerifiedAt": "2026-11-01",
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "RES_HEAT_01",
+    "name": "Universiti Malaya Student Health Clinic (PKU UM)",
+    "category": "EXTREME_HEAT",
+    "shortDescription": "On-campus medical triage, acute fluid resuscitation, and emergency care for students experiencing heat exhaustion, severe dehydration, or clinical hyperthermia.",
+    "sourceOrganization": "Pusat Kesihatan Universiti (PKU UM)",
+    "officialUrl": "https://pku.um.edu.my",
+    "phoneNumber": "+603-7967 6445",
+    "lastVerifiedAt": "2026-11-01",
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "RES_HEAT_02",
+    "name": "MET Malaysia Heatwave Monitoring System",
+    "category": "EXTREME_HEAT",
+    "shortDescription": "Official daily nationwide heatwave monitoring portal tracking consecutive days above 35°C (Yellow Alert: 35–37°C for 3 days; Orange Alert: 37–40°C; Red Alert: >40°C).",
+    "sourceOrganization": "Malaysian Meteorological Department",
+    "officialUrl": "https://www.met.gov.my",
+    "phoneNumber": "1-300-22-1638",
+    "lastVerifiedAt": "2026-11-01",
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "RES_HEAT_03",
+    "name": "Ministry of Health Malaysia (MOH) Public Heat Advisories",
+    "category": "EXTREME_HEAT",
+    "shortDescription": "Statutory clinical health guidelines on identifying heat exhaustion versus life-threatening heat stroke, immediate bystander first aid, and rehydration best practices.",
+    "sourceOrganization": "Kementerian Kesihatan Malaysia (KKM)",
+    "officialUrl": "https://www.moh.gov.my",
+    "phoneNumber": "+603-8883 3888",
+    "lastVerifiedAt": "2026-11-01",
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "RES_HAZE_01",
+    "name": "Department of Environment APIMS Portal",
+    "category": "HAZE_AIR_QUALITY",
+    "shortDescription": "Official real-time hourly Air Pollutant Index Management System (APIMS) reporting continuous PM2.5 readings for Petaling Jaya (nearest station to UM campus) and Cheras.",
+    "sourceOrganization": "Department of Environment (JAS Malaysia)",
+    "officialUrl": "https://apims.doe.gov.my",
+    "phoneNumber": "+603-8889 1972",
+    "lastVerifiedAt": "2026-11-01",
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "RES_HAZE_02",
+    "name": "ASEAN Specialised Meteorological Centre (ASMC)",
+    "category": "HAZE_AIR_QUALITY",
+    "shortDescription": "Regional satellite monitoring agency tracking transboundary smoke haze trajectories, satellite fire hotspot counts, and prevailing Southwest Monsoon wind directions across Southeast Asia.",
+    "sourceOrganization": "ASMC / ASEAN Secretariat",
+    "officialUrl": "https://asmc.asean.org",
+    "phoneNumber": "",
+    "lastVerifiedAt": "2026-11-01",
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "RES_HAZE_03",
+    "name": "UM Occupational Safety & Health Section (OSH UM)",
+    "category": "HAZE_AIR_QUALITY",
+    "shortDescription": "Oversees university-wide workplace safety guidelines, indoor air quality filtration standards in auditoriums and lecture theatres, and personal protective equipment (PPE/respirator) advisories.",
+    "sourceOrganization": "Universiti Malaya (OSH / BKU)",
+    "officialUrl": "https://osh.um.edu.my",
+    "phoneNumber": "+603-7967 7948",
+    "lastVerifiedAt": "2026-11-01",
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "RES_CLIMATE_01",
+    "name": "Universiti Malaya Sustainability Development Centre (UMSDC)",
+    "category": "CLIMATE_CHANGE",
+    "shortDescription": "Central institutional hub driving UM's Eco-Campus master plan, coordinating campus carbon tracking, Rimba Ilmu ecological conservation, and university-wide SDG 13 initiatives.",
+    "sourceOrganization": "Universiti Malaya (UMSDC)",
+    "officialUrl": "https://sustainability.um.edu.my",
+    "phoneNumber": "+603-7967 7990",
+    "lastVerifiedAt": "2026-11-01",
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "RES_CLIMATE_02",
+    "name": "Ministry of Natural Resources & Environmental Sustainability (NRES)",
+    "category": "CLIMATE_CHANGE",
+    "shortDescription": "Lead federal ministry overseeing Malaysia's National Climate Change Policy, greenhouse gas inventory reports, carbon commitments under the Paris Agreement, and national adaptation planning.",
+    "sourceOrganization": "NRES Malaysia",
+    "officialUrl": "https://www.nres.gov.my",
+    "phoneNumber": "+603-8000 8000",
+    "lastVerifiedAt": "2026-11-01",
+    "verificationStatus": "VERIFIED"
+  },
+  {
+    "id": "RES_CLIMATE_03",
+    "name": "United Nations SDG 13 Knowledge Platform",
+    "category": "CLIMATE_CHANGE",
+    "shortDescription": "Global repository providing official target indicators, progress metrics, and educational documentation for Sustainable Development Goal 13: Climate Action (Target 13.3).",
+    "sourceOrganization": "United Nations Department of Economic and Social Affairs",
+    "officialUrl": "https://sdgs.un.org/goals/goal13",
+    "phoneNumber": "",
+    "lastVerifiedAt": "2026-11-01",
+    "verificationStatus": "VERIFIED"
+  }
+]

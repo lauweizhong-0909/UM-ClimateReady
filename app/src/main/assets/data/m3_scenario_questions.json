@@ -1,0 +1,1682 @@
+[
+  {
+    "id": "SQ_RAIN_01",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 1,
+    "isCampusSpecific": true,
+    "scenario": "You are exiting the Faculty of Arts and Social Sciences heading toward PJ Gate after a 45-minute cloudburst. The main perimeter exit has standing water covering the curb. What is the safest route action?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Wade across quickly before the current picks up"
+      },
+      {
+        "id": "B",
+        "text": "Divert to higher internal faculty ring roads and avoid low- lying gate depressions"
+      },
+      {
+        "id": "C",
+        "text": "Drive a compact car through to push the water aside"
+      },
+      {
+        "id": "D",
+        "text": "Wait on the grass slope beside the drainage trench"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "PJ Gate represents a natural localized depression prone to surface runoff accumulation; students should route through elevated internal campus roads.",
+    "relatedLearningUnitId": "RAIN_02"
+  },
+  {
+    "id": "SQ_RAIN_02",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 2,
+    "isCampusSpecific": true,
+    "scenario": "Near the Universiti Malaya Examination Building, stormwater is rapidly swirling into an open perimeter drain grating that is partially obscured by muddy water. You need to reach the bus shelter. How should you proceed?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Jump over the submerged culvert to save time"
+      },
+      {
+        "id": "B",
+        "text": "Probe the drain cover with your foot while wading"
+      },
+      {
+        "id": "C",
+        "text": "Avoid walking near obscured roadside drains; maintain distance from swirling water"
+      },
+      {
+        "id": "D",
+        "text": "Remove the grating to speed up water drainage"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": "Swirling water indicates a high-velocity suction vortex capable of trapping feet into dislodged inspection gratings.",
+    "relatedLearningUnitId": "RAIN_04"
+  },
+  {
+    "id": "SQ_RAIN_03",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 3,
+    "isCampusSpecific": true,
+    "scenario": "Your car is parked in the basement level of a campus faculty. MET Malaysia has just issued an Orange Continuous Heavy Rain Warning for the Petaling district. What is the appropriate protective protocol?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Relocate the vehicle to an elevated outdoor multi-storey or upper surface lot"
+      },
+      {
+        "id": "B",
+        "text": "Leave the car locked in the basement with windows rolled down"
+      },
+      {
+        "id": "C",
+        "text": "Wait until water reaches the basement entrance ramp before checking"
+      },
+      {
+        "id": "D",
+        "text": "Block the basement ramp with temporary plastic cones"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Basement car parks represent high-risk containment basins during severe continuous rainfall events; vehicles should be staged on higher ground early.",
+    "relatedLearningUnitId": "RAIN_03"
+  },
+  {
+    "id": "SQ_RAIN_04",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 4,
+    "isCampusSpecific": true,
+    "scenario": "While walking between residential colleges (KK10 and KK12) during a monsoon storm, you spot a broken overhead power cable lying across a puddle on the pathway. What should you do?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Step carefully over the wire ensuring your shoes do not touch it"
+      },
+      {
+        "id": "B",
+        "text": "Use an umbrella pole to flick the cable onto the grass"
+      },
+      {
+        "id": "C",
+        "text": "Stop immediately, stay at least 10 meters away, and alert campus security / JPPHB"
+      },
+      {
+        "id": "D",
+        "text": "Pour sand onto the cable to insulate it UM ClimateReady • Module 3 AI Scenario Quiz Bank & Pipeline Page 2 of 12"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": "Water conducts high-voltage ground gradients from severed lines; keep a safe clearance of at least 10 meters and report immediately.",
+    "relatedLearningUnitId": "RAIN_04"
+  },
+  {
+    "id": "SQ_RAIN_05",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 5,
+    "isCampusSpecific": true,
+    "scenario": "You have an in-person tutorial at the Faculty of Computer Science at 4:30 PM. Satellite radar shows severe convective storm cells forming directly over Petaling Jaya. How should you prepare?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Rely solely on outdoor campus shuttle buses without checking weather updates"
+      },
+      {
+        "id": "B",
+        "text": "Depart early, pack laptop in a waterproof sleeve, and identify sheltered transit paths"
+      },
+      {
+        "id": "C",
+        "text": "Run across open football fields to beat the downpour"
+      },
+      {
+        "id": "D",
+        "text": "Assume afternoon storms dissipate within 5 minutes"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Late afternoon convective storms in the Klang Valley cause sudden localized transit delays and heavy downpours requiring waterproof precautions.",
+    "relatedLearningUnitId": "RAIN_01"
+  },
+  {
+    "id": "SQ_RAIN_06",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 6,
+    "isCampusSpecific": false,
+    "scenario": "A commuter encounters a flooded road dip where water depth appears to be around 20 cm with a moderate current. Why is driving across hazardous?",
+    "options": [
+      {
+        "id": "A",
+        "text": "It will scratch the lower vehicle chassis"
+      },
+      {
+        "id": "B",
+        "text": "Just 30 cm can float passenger vehicles, and water may hide deep sinkholes"
+      },
+      {
+        "id": "C",
+        "text": "Car tires instantly melt in moving water"
+      },
+      {
+        "id": "D",
+        "text": "Air resistance increases drastically under rain"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Moving water generates significant buoyant uplift and lateral force capable of sweeping light vehicles off roadways.",
+    "relatedLearningUnitId": "RAIN_04"
+  },
+  {
+    "id": "SQ_RAIN_07",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 7,
+    "isCampusSpecific": false,
+    "scenario": "Why do inter-monsoon periods in Western Peninsular Malaysia produce sudden intense flash floods compared to regular monsoon seasons?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Ocean tides rise inland by 20 meters"
+      },
+      {
+        "id": "B",
+        "text": "Strong solar surface heating creates severe localized convective thunderstorms"
+      },
+      {
+        "id": "C",
+        "text": "Forest trees absorb less water in April and October"
+      },
+      {
+        "id": "D",
+        "text": "Industrial air conditioners release excess humidity"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Inter-monsoon convective heating causes rapid cloud updrafts and short-duration, high-intensity precipitation bursts.",
+    "relatedLearningUnitId": "RAIN_01"
+  },
+  {
+    "id": "SQ_RAIN_08",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 8,
+    "isCampusSpecific": false,
+    "scenario": "How does high urban concrete density directly worsen flash flooding in metropolitan river basins?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Prevents natural infiltration, converting up to 90% of rain into surface runoff"
+      },
+      {
+        "id": "B",
+        "text": "Increases atmospheric air pressure over suburbs"
+      },
+      {
+        "id": "C",
+        "text": "Slows down the speed of rainwater flowing into rivers"
+      },
+      {
+        "id": "D",
+        "text": "Causes cloud layers to lower to ground level"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Impervious paved surfaces destroy hydrological retention, causing rapid overland runoff volumes that overwhelm stormwater infrastructure.",
+    "relatedLearningUnitId": "RAIN_02"
+  },
+  {
+    "id": "SQ_RAIN_09",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 9,
+    "isCampusSpecific": false,
+    "scenario": "What action is mandatory upon receiving a MET Malaysia 'Red (Danger)' Continuous Rain Warning for your district?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Prepare for a light afternoon shower"
+      },
+      {
+        "id": "B",
+        "text": "Carry an extra paper umbrella"
+      },
+      {
+        "id": "C",
+        "text": "Avoid unnecessary travel, monitor emergency updates, and follow official evacuation directives"
+      },
+      {
+        "id": "D",
+        "text": "Switch off home municipal tap water"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": "Red warnings signify critical extreme precipitation exceeding 240 mm in 24 hours with imminent severe flooding risk.",
+    "relatedLearningUnitId": "RAIN_03"
+  },
+  {
+    "id": "SQ_RAIN_10",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 10,
+    "isCampusSpecific": false,
+    "scenario": "An individual is forced to walk through ankle-deep stagnant floodwater to reach safety. What hygiene measure is vital immediately afterward?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Thoroughly wash and disinfect skin and open cuts to prevent Leptospirosis infection"
+      },
+      {
+        "id": "B",
+        "text": "Apply sunblock to exposed legs"
+      },
+      {
+        "id": "C",
+        "text": "Keep wet shoes on until completely dry"
+      },
+      {
+        "id": "D",
+        "text": "Drink cold bottled soda immediately"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Urban floodwaters carry bacterial and rodent pathogens (Leptospirosis) that penetrate micro-abrasions in human skin.",
+    "relatedLearningUnitId": "RAIN_04"
+  },
+  {
+    "id": "SQ_RAIN_11",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 11,
+    "isCampusSpecific": false,
+    "scenario": "What is the main hazard of walking across submerged pedestrian zebra crossings during heavy stormwater overflow?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Painted stripes reflect blinding light"
+      },
+      {
+        "id": "B",
+        "text": "Hydrodynamic pressure often dislodges metal drain covers beneath the water"
+      },
+      {
+        "id": "C",
+        "text": "Pedestrian shoes lose all friction immediately"
+      },
+      {
+        "id": "D",
+        "text": "Water lowers ambient oxygen levels"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Surcharge water pressure in storm culverts frequently lifts heavy cast-iron manhole covers, creating invisible deadly drop-offs.",
+    "relatedLearningUnitId": "RAIN_02"
+  },
+  {
+    "id": "SQ_RAIN_12",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 12,
+    "isCampusSpecific": false,
+    "scenario": "Which official governmental app or platform in Malaysia provides verified real-time public disaster alerts and flood relief center statuses?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Commercial ride-hailing maps"
+      },
+      {
+        "id": "B",
+        "text": "NADMA Disaster Portal / InfoBencanaJKM"
+      },
+      {
+        "id": "C",
+        "text": "International travel booking websites"
+      },
+      {
+        "id": "D",
+        "text": "Social media trending hashtags"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Official disaster coordination and validated shelter deployments are managed centrally by NADMA and JKM in Malaysia.",
+    "relatedLearningUnitId": "RAIN_03"
+  },
+  {
+    "id": "SQ_RAIN_13",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 13,
+    "isCampusSpecific": false,
+    "scenario": "If a passenger vehicle stalls in rising floodwaters and the water level continues climbing past the door sill, what is the safest step?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Stay inside and keep the engine revving high"
+      },
+      {
+        "id": "B",
+        "text": "Abandon the vehicle immediately and move to higher ground before pressure seals doors"
+      },
+      {
+        "id": "C",
+        "text": "Roll up all windows completely and wait for a tow truck"
+      },
+      {
+        "id": "D",
+        "text": "Sleep on the back seat"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Rising exterior water equalizes door pressure and will rapidly trap occupants inside; escape to higher ground immediately.",
+    "relatedLearningUnitId": "RAIN_04"
+  },
+  {
+    "id": "SQ_RAIN_14",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 14,
+    "isCampusSpecific": false,
+    "scenario": "What meteorological factor turns localized tropical afternoon showers into prolonged multi-day severe monsoon storms?",
+    "options": [
+      {
+        "id": "B",
+        "text": "Cold surge wind surges interacting with low-pressure tropical disturbances"
+      },
+      {
+        "id": "A",
+        "text": "Sudden drops in ocean salinity"
+      },
+      {
+        "id": "C",
+        "text": "High pollen levels in rural plantations"
+      },
+      {
+        "id": "D",
+        "text": "Clear night skies during full moon"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Northeast monsoon cold surges channel sustained maritime moisture toward the Malaysian peninsula, driving continuous heavy rain.",
+    "relatedLearningUnitId": "RAIN_01"
+  },
+  {
+    "id": "SQ_RAIN_15",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 15,
+    "isCampusSpecific": false,
+    "scenario": "When preparing a personal emergency \"Go-Bag\" for severe seasonal monsoon flooding, which item holds highest priority?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Heavy textbooks and stationery sets"
+      },
+      {
+        "id": "B",
+        "text": "Waterproof pouch with identification, prescription medicine, power bank, and torch"
+      },
+      {
+        "id": "C",
+        "text": "Multiple pairs of fashion shoes"
+      },
+      {
+        "id": "D",
+        "text": "Scented candles and matches"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Critical documents, emergency communication power, and life-essential prescriptions are paramount in flood displacements.",
+    "relatedLearningUnitId": "RAIN_03"
+  },
+  {
+    "id": "SQ_RAIN_16",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 16,
+    "isCampusSpecific": false,
+    "scenario": "Why should civilians never enter floodwaters to assist with salvage operations without personal flotation equipment?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Underwater crosscurrents, hidden debris, and zero visibility cause rapid drowning"
+      },
+      {
+        "id": "B",
+        "text": "Cold water softens vehicle paint"
+      },
+      {
+        "id": "C",
+        "text": "Stagnant water damages smartphones permanently"
+      },
+      {
+        "id": "D",
+        "text": "Cloud cover prevents satellite navigation"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Swift-water currents and submerged entanglement hazards cause over 50% of flood-related civilian fatalities during rescue attempts.",
+    "relatedLearningUnitId": "RAIN_04"
+  },
+  {
+    "id": "SQ_RAIN_17",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 17,
+    "isCampusSpecific": false,
+    "scenario": "In civil engineering, what is the role of retention ponds (kolam takungan) in urban development areas?",
+    "options": [
+      {
+        "id": "A",
+        "text": "To raise local river water levels"
+      },
+      {
+        "id": "B",
+        "text": "To temporarily buffer and hold peak runoff volumes before gradual discharge"
+      },
+      {
+        "id": "C",
+        "text": "To breed commercial freshwater fish"
+      },
+      {
+        "id": "D",
+        "text": "To evaporate water into rain clouds"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Retention basins attenuate peak storm runoff hydrographs, preventing sudden downstream canal overflow.",
+    "relatedLearningUnitId": "RAIN_02"
+  },
+  {
+    "id": "SQ_RAIN_18",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 18,
+    "isCampusSpecific": false,
+    "scenario": "What cloud type is the primary generator of violent convective thunderstorms, severe lightning, and flash flooding in Malaysia?",
+    "options": [
+      {
+        "id": "A",
+        "text": "High-altitude Cirrus"
+      },
+      {
+        "id": "B",
+        "text": "Mid-level Altostratus"
+      },
+      {
+        "id": "C",
+        "text": "Cumulonimbus with vertical anvil tower"
+      },
+      {
+        "id": "D",
+        "text": "Low Stratus fog"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": "Cumulonimbus clouds exhibit deep vertical convection containing massive precipitable water vapor and electrical charge.",
+    "relatedLearningUnitId": "RAIN_01"
+  },
+  {
+    "id": "SQ_RAIN_19",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 19,
+    "isCampusSpecific": false,
+    "scenario": "If localized flash flood water enters the ground floor of a building, what is the immediate electrical safety measure?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Unplug individual appliances while standing in puddle"
+      },
+      {
+        "id": "B",
+        "text": "Shut off the main circuit breaker / distribution board if safe to reach without wading"
+      },
+      {
+        "id": "C",
+        "text": "Switch on ceiling fans to dry the wet floor"
+      },
+      {
+        "id": "D",
+        "text": "Wrap electrical outlets with duct tape"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "De-energizing the main distribution panel prevents electrocution through standing water; never touch if standing in water.",
+    "relatedLearningUnitId": "RAIN_03"
+  },
+  {
+    "id": "SQ_RAIN_20",
+    "category": "HEAVY_RAIN",
+    "categoryOrder": 20,
+    "isCampusSpecific": false,
+    "scenario": "Following a localized flash flood, why are municipal authorities warning residents against consuming municipal tap water without boiling?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Flood runoff can infiltrate fractured water mains and cross- contaminate supply pipes"
+      },
+      {
+        "id": "B",
+        "text": "Rainwater makes tap water taste sour"
+      },
+      {
+        "id": "C",
+        "text": "Cold water prevents soap from lathering"
+      },
+      {
+        "id": "D",
+        "text": "Tap water loses fluoride during rain"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "High pressure differentials and damaged distribution piping often allow contaminated floodwater ingress into clean water conduits.",
+    "relatedLearningUnitId": "RAIN_04"
+  },
+  {
+    "id": "SQ_HEAT_01",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 1,
+    "isCampusSpecific": true,
+    "scenario": "You have to walk from Kolej Kediaman Tuanku Bahiyah (KK2) to the Main Library at 1:30 PM under bright sun (34°C, 75% RH). Which route choice minimizes physiological heat stress?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Walk along the open main asphalt ring road at maximum pace"
+      },
+      {
+        "id": "B",
+        "text": "Follow covered linkways and shaded tree-canopy corridors near faculty buildings"
+      },
+      {
+        "id": "C",
+        "text": "Run continuously without carrying water"
+      },
+      {
+        "id": "D",
+        "text": "Walk on the sunny side to avoid insects"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Shaded canopy routes reduce radiant heat absorption by up to 10–15°C compared to open, unshaded asphalt pavements.",
+    "relatedLearningUnitId": "HEAT_04"
+  },
+  {
+    "id": "SQ_HEAT_02",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 2,
+    "isCampusSpecific": true,
+    "scenario": "During a sports tournament at UM Varsity Stadium at 2:00 PM, a student athlete suddenly stumbles, displays flushed dry skin, and appears completely delirious. What is the emergency response?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Offer them an energy drink and leave them on the bench to rest"
+      },
+      {
+        "id": "B",
+        "text": "Tell them to walk back to their hostel dormitory"
+      },
+      {
+        "id": "C",
+        "text": "Call emergency services immediately; move to shade and initiate active body cooling with cold water/ice"
+      },
+      {
+        "id": "D",
+        "text": "Cover them with a heavy track jacket to absorb sweat"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": "Dry skin and delirium signify life-threatening Heat Stroke; rapid cooling and urgent medical resuscitation are mandatory.",
+    "relatedLearningUnitId": "HEAT_02"
+  },
+  {
+    "id": "SQ_HEAT_03",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 3,
+    "isCampusSpecific": true,
+    "scenario": "You are revising for exams in an un-airconditioned study hall at your residential college on a humid 35°C afternoon. What hydration strategy is clinically recommended?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Drink three cans of high-caffeine energy drinks to sustain alertness"
+      },
+      {
+        "id": "B",
+        "text": "Drink plain water or diluted electrolyte fluids consistently in moderate quantities"
+      },
+      {
+        "id": "C",
+        "text": "Restrict water intake to avoid restroom breaks"
+      },
+      {
+        "id": "D",
+        "text": "Consume hot concentrated sweet tea"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "High caffeine acts as a mild diuretic and elevates metabolic rate; steady intake of plain water and electrolytes sustains blood volume.",
+    "relatedLearningUnitId": "HEAT_03"
+  },
+  {
+    "id": "SQ_HEAT_04",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 4,
+    "isCampusSpecific": true,
+    "scenario": "A group of international exchange students newly arrived at UM are attending an orientation walk around campus. How should the organizers structure outdoor campus tours during heatwaves?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Schedule walking tours before 10:00 AM or after 5:00 PM with regular water refill stops"
+      },
+      {
+        "id": "B",
+        "text": "Conduct intensive marches between 12:00 PM and 2:00 PM to build stamina"
+      },
+      {
+        "id": "C",
+        "text": "Prohibit carrying umbrellas to keep hands free"
+      },
+      {
+        "id": "D",
+        "text": "Require all participants to wear dark polyester suits"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Unacclimatized individuals require 10–14 days to adjust to tropical heat stress; outdoor activity during peak solar hours should be strictly curtailed.",
+    "relatedLearningUnitId": "HEAT_04"
+  },
+  {
+    "id": "SQ_HEAT_05",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 5,
+    "isCampusSpecific": true,
+    "scenario": "You need to wait 25 minutes for the UM internal shuttle bus at an unsheltered bus stop along Lingkungan Budi during midday sun. What should you do?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Stand in direct sunlight to ensure the bus driver sees you"
+      },
+      {
+        "id": "B",
+        "text": "Deploy a UV-reflective umbrella or wait under nearby tree shade while watching for the bus"
+      },
+      {
+        "id": "C",
+        "text": "Sit directly on the heated asphalt curb"
+      },
+      {
+        "id": "D",
+        "text": "Turn off your phone and avoid drinking water"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "UV-rated umbrellas and tree shade eliminate direct solar radiation, lowering apparent temperature exposure significantly.",
+    "relatedLearningUnitId": "HEAT_03"
+  },
+  {
+    "id": "SQ_HEAT_06",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 6,
+    "isCampusSpecific": false,
+    "scenario": "What physiological mechanism is suppressed when ambient relative humidity reaches 85% on a 33°C tropical afternoon?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Deep lung oxygen diffusion"
+      },
+      {
+        "id": "B",
+        "text": "Sweat evaporation from the skin surface"
+      },
+      {
+        "id": "C",
+        "text": "Red blood cell hemoglobin production"
+      },
+      {
+        "id": "D",
+        "text": "Pupillary constriction to light"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "High atmospheric vapor saturation prevents sweat from vaporizing, disabling the human body's primary heat-dissipating cooling method.",
+    "relatedLearningUnitId": "HEAT_01"
+  },
+  {
+    "id": "SQ_HEAT_07",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 7,
+    "isCampusSpecific": false,
+    "scenario": "A runner finishes an outdoor 5K run feeling dizzy, nauseated, and heavily sweating with pale, clammy skin. What stage of heat illness is this?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Complete thermal homeostasis"
+      },
+      {
+        "id": "B",
+        "text": "Heat Exhaustion"
+      },
+      {
+        "id": "C",
+        "text": "Severe hypothermia"
+      },
+      {
+        "id": "D",
+        "text": "Frostbite stage 1"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Heavy sweating accompanied by pale, clammy skin and nausea is classic clinical presentation for Heat Exhaustion.",
+    "relatedLearningUnitId": "HEAT_02"
+  },
+  {
+    "id": "SQ_HEAT_08",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 8,
+    "isCampusSpecific": false,
+    "scenario": "Why is light-colored, loose-fitting cotton or linen clothing superior to dark tight polyester in tropical heat?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Reflects solar radiation and allows convective airflow across skin pores"
+      },
+      {
+        "id": "B",
+        "text": "Blocks air from touching the body"
+      },
+      {
+        "id": "C",
+        "text": "Absorbs infrared radiation into the fibers"
+      },
+      {
+        "id": "D",
+        "text": "Increases skin friction to generate sweat"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Light colors reflect solar thermal radiation, while loose weaves promote natural air circulation and sweat evaporation.",
+    "relatedLearningUnitId": "HEAT_03"
+  },
+  {
+    "id": "SQ_HEAT_09",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 9,
+    "isCampusSpecific": false,
+    "scenario": "What defines the \"Urban Heat Island\" effect in modern metropolitan cities?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cities floating on artificial water bodies"
+      },
+      {
+        "id": "B",
+        "text": "Urban concrete and asphalt absorbing and re-radiating heat, keeping cities hotter than rural outskirts"
+      },
+      {
+        "id": "C",
+        "text": "Ocean waves warming coastal beaches"
+      },
+      {
+        "id": "D",
+        "text": "Complete absence of clouds above skyscrapers"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Impervious structural materials and vehicular waste heat elevate urban air temperatures several degrees above vegetated countryside.",
+    "relatedLearningUnitId": "HEAT_04"
+  },
+  {
+    "id": "SQ_HEAT_10",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 10,
+    "isCampusSpecific": false,
+    "scenario": "When a meteorological service reports a temperature of 32°C but a \"Feels Like\" Heat Index of 41°C, what does this indicate?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Atmospheric pressure has doubled"
+      },
+      {
+        "id": "B",
+        "text": "Humidity has reduced evaporative cooling, imposing cardiovascular strain equivalent to 41°C dry air"
+      },
+      {
+        "id": "C",
+        "text": "Rain will fall within 10 minutes"
+      },
+      {
+        "id": "D",
+        "text": "Thermometers are malfunctioning"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "The Heat Index measures the combined physiological impact of ambient temperature and moisture content on human thermoregulation.",
+    "relatedLearningUnitId": "HEAT_01"
+  },
+  {
+    "id": "SQ_HEAT_11",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 11,
+    "isCampusSpecific": false,
+    "scenario": "Why is giving oral fluids to an unconscious heat stroke victim strictly contraindicated?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Risk of liquid aspiration into the lungs causing choking and asphyxiation"
+      },
+      {
+        "id": "B",
+        "text": "Liquid reduces core body temperature too fast"
+      },
+      {
+        "id": "C",
+        "text": "Drinking water causes sudden kidney expansion"
+      },
+      {
+        "id": "D",
+        "text": "Throat muscles freeze under heat"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Depressed gag reflexes in unconscious patients allow fluids to enter the trachea and pulmonary tree; prioritize active external cooling.",
+    "relatedLearningUnitId": "HEAT_02"
+  },
+  {
+    "id": "SQ_HEAT_12",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 12,
+    "isCampusSpecific": false,
+    "scenario": "What is the most effective placement of ice packs or cold wet towels for emergency cooling of a hyperthermic patient?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Fingertips and ear lobes"
+      },
+      {
+        "id": "B",
+        "text": "Neck, armpits (axillae), and groin where major blood vessels run close to the surface"
+      },
+      {
+        "id": "C",
+        "text": "Over the stomach only"
+      },
+      {
+        "id": "D",
+        "text": "Soles of the shoes"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Applying cold compresses directly over major arterial conduits (carotid, femoral, axillary) rapidly cools circulating systemic blood.",
+    "relatedLearningUnitId": "HEAT_03"
+  },
+  {
+    "id": "SQ_HEAT_13",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 13,
+    "isCampusSpecific": false,
+    "scenario": "How does mature urban street tree foliage mitigate microclimate ground temperatures?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Through direct solar shading and evapotranspirative cooling"
+      },
+      {
+        "id": "B",
+        "text": "By absorbing wind currents completely"
+      },
+      {
+        "id": "C",
+        "text": "By converting ground carbon into ice"
+      },
+      {
+        "id": "D",
+        "text": "By creating low-pressure vacuums"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Leaf canopies intercept direct shortwave solar radiation and transpire moisture, significantly moderating surrounding air temperature.",
+    "relatedLearningUnitId": "HEAT_04"
+  },
+  {
+    "id": "SQ_HEAT_14",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 14,
+    "isCampusSpecific": false,
+    "scenario": "What physiological response occurs first when human core temperature rises above 37°C?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Peripheral blood vessels constrict"
+      },
+      {
+        "id": "B",
+        "text": "Peripheral vasodilation (blood vessels expand) and sweat production begins"
+      },
+      {
+        "id": "C",
+        "text": "Heart rate slows down drastically"
+      },
+      {
+        "id": "D",
+        "text": "Digestive enzymes stop functioning"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "The autonomic nervous system dilates superficial cutaneous capillaries to radiate heat outward and initiates active eccrine sweating.",
+    "relatedLearningUnitId": "HEAT_01"
+  },
+  {
+    "id": "SQ_HEAT_15",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 15,
+    "isCampusSpecific": false,
+    "scenario": "Why should individuals avoid drinking large volumes of pure ice-cold water in a single rapid chug during severe heat exhaustion?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Can induce severe stomach cramps and involuntary vomiting"
+      },
+      {
+        "id": "B",
+        "text": "Causes blood to boil"
+      },
+      {
+        "id": "C",
+        "text": "Destroys tongue taste buds"
+      },
+      {
+        "id": "D",
+        "text": "Permanently freezes esophagus nerves"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Rapid ingestion of large ice-cold boluses can trigger gastric vascular spasms and emesis; sip cool fluids steadily.",
+    "relatedLearningUnitId": "HEAT_03"
+  },
+  {
+    "id": "SQ_HEAT_16",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 16,
+    "isCampusSpecific": false,
+    "scenario": "What simple visual metric provides an immediate, reliable indicator of an individual's daily hydration status?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Eye iris color"
+      },
+      {
+        "id": "B",
+        "text": "Urine color (pale straw indicates good hydration, dark amber signals dehydration)"
+      },
+      {
+        "id": "C",
+        "text": "Fingernail length"
+      },
+      {
+        "id": "D",
+        "text": "Ear lobe warmth"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Urinary color concentration directly reflects renal water retention in response to systemic fluid balance.",
+    "relatedLearningUnitId": "HEAT_02"
+  },
+  {
+    "id": "SQ_HEAT_17",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 17,
+    "isCampusSpecific": false,
+    "scenario": "What is the primary physiological benefit achieved after completing 14 days of gradual heat acclimatization?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Earlier sweat onset at lower body temperatures with reduced electrolyte salt loss"
+      },
+      {
+        "id": "B",
+        "text": "Complete elimination of the need to drink water"
+      },
+      {
+        "id": "C",
+        "text": "Total immunity to direct sunlight sunburns"
+      },
+      {
+        "id": "D",
+        "text": "Permanent lowering of resting body temperature to 30°C"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Acclimatization optimizes sweating efficiency (more dilute sweat, faster activation) and expands circulating plasma volume.",
+    "relatedLearningUnitId": "HEAT_04"
+  },
+  {
+    "id": "SQ_HEAT_18",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 18,
+    "isCampusSpecific": false,
+    "scenario": "Which demographic cohort is at greatest biological risk of rapid heat-related illness during tropical heatwaves?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Young trained athletes"
+      },
+      {
+        "id": "B",
+        "text": "Elderly individuals, young children, and people with pre- existing cardiovascular ailments"
+      },
+      {
+        "id": "C",
+        "text": "Desk workers sitting in air conditioning"
+      },
+      {
+        "id": "D",
+        "text": "Commercial airplane pilots"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Children and the elderly exhibit diminished thermoregulatory autonomic reserves and blunted thirst sensation mechanisms.",
+    "relatedLearningUnitId": "HEAT_01"
+  },
+  {
+    "id": "SQ_HEAT_19",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 19,
+    "isCampusSpecific": false,
+    "scenario": "What is the primary function of electrolytes (sodium, potassium) during rehydration after prolonged sweating in hot weather?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Maintains cellular osmotic balance and prevents life- threatening hyponatremia"
+      },
+      {
+        "id": "B",
+        "text": "Increases human bone density"
+      },
+      {
+        "id": "C",
+        "text": "Colors the skin to prevent sunburn"
+      },
+      {
+        "id": "D",
+        "text": "Cools blood by chemical reaction"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Copious sweating depletes sodium; drinking pure water in extreme excess without electrolytes can dilute blood sodium (hyponatremia).",
+    "relatedLearningUnitId": "HEAT_03"
+  },
+  {
+    "id": "SQ_HEAT_20",
+    "category": "EXTREME_HEAT",
+    "categoryOrder": 20,
+    "isCampusSpecific": false,
+    "scenario": "If an individual experiencing heat cramps continues strenuous outdoor physical labor without resting or hydrating, what is the probable outcome?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Muscle cramps spontaneously vanish permanently"
+      },
+      {
+        "id": "B",
+        "text": "Progression to systemic Heat Exhaustion and potential fatal Heat Stroke"
+      },
+      {
+        "id": "C",
+        "text": "Immediate adaptation to cold weather"
+      },
+      {
+        "id": "D",
+        "text": "Sudden increase in eyesight clarity"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Heat cramps represent the initial warning stage; unmitigated exertion quickly cascades into thermoregulatory collapse.",
+    "relatedLearningUnitId": "HEAT_02"
+  },
+  {
+    "id": "SQ_HAZE_01",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 1,
+    "isCampusSpecific": true,
+    "scenario": "The APIMS station in Petaling Jaya registers an Air Pollutant Index (API) of 165 (Unhealthy). You need to attend a laboratory session across campus. What mask choice is verified to filter PM2.5?",
+    "options": [
+      {
+        "id": "A",
+        "text": "A single-layer cotton bandana tied tightly"
+      },
+      {
+        "id": "B",
+        "text": "A standard loose-fitting surgical mask"
+      },
+      {
+        "id": "C",
+        "text": "A certified, well-fitted particulate respirator (N95 / KF94 / KN95)"
+      },
+      {
+        "id": "D",
+        "text": "A damp tissue paper placed over your mouth"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": "Fine particulate matter (PM2.5) bypasses loose surgical masks; certified respirators create an electrostatic seal that traps sub- micron aerosols.",
+    "relatedLearningUnitId": "HAZE_04"
+  },
+  {
+    "id": "SQ_HAZE_02",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 2,
+    "isCampusSpecific": true,
+    "scenario": "You are the president of a sports society planning outdoor rugby training at UM Sports Centre. The official morning API reading is 215 (Very Unhealthy). What is the appropriate management decision?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Proceed with training but shorten the duration by 10 minutes"
+      },
+      {
+        "id": "B",
+        "text": "Cancel all outdoor physical sessions immediately and relocate to indoor study/tactical reviews"
+      },
+      {
+        "id": "C",
+        "text": "Hand out menthol sweets to players and continue"
+      },
+      {
+        "id": "D",
+        "text": "Tell players to breathe exclusively through their noses"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "An API >200 mandates the complete cessation of vigorous outdoor activities to protect cardiovascular and respiratory health.",
+    "relatedLearningUnitId": "HAZE_02"
+  },
+  {
+    "id": "SQ_HAZE_03",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 3,
+    "isCampusSpecific": true,
+    "scenario": "Your roommate at Kolej Kediaman Raja Dr. Nazrin Shah (KK12) has clinically diagnosed asthma. During a regional haze surge (API 175), they begin coughing with audible wheezing. What should you do?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Open all bedroom balcony windows to let fresh air circulate"
+      },
+      {
+        "id": "B",
+        "text": "Ensure they use their prescribed reliever inhaler, seal room windows, and seek medical attention at PKU UM if symptoms worsen"
+      },
+      {
+        "id": "C",
+        "text": "Light an aromatic mosquito coil in the bedroom"
+      },
+      {
+        "id": "D",
+        "text": "Tell them to hold their breath for 60 seconds"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Smoke particulates trigger severe bronchospasms in asthmatics; keep rooms sealed from outdoor ingress and access clinical care.",
+    "relatedLearningUnitId": "HAZE_03"
+  },
+  {
+    "id": "SQ_HAZE_04",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 4,
+    "isCampusSpecific": true,
+    "scenario": "How should residential college students manage dormitory room ventilation when Klang Valley experiences transboundary smoke haze?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Keep windows and doors securely closed, set air conditioners to indoor recirculation, and run air purifiers if available"
+      },
+      {
+        "id": "B",
+        "text": "Run large exhaust fans to pull exterior outdoor air inside"
+      },
+      {
+        "id": "C",
+        "text": "Burn scented candles to neutralize combustion odor"
+      },
+      {
+        "id": "D",
+        "text": "Spray water mists out the window"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Sealing apertures prevents ambient particulate ingress; avoid burning incense or candles which introduces additional dangerous indoor VOCs.",
+    "relatedLearningUnitId": "HAZE_04"
+  },
+  {
+    "id": "SQ_HAZE_05",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 5,
+    "isCampusSpecific": true,
+    "scenario": "Where can UM students check the nearest, verified official Malaysian air pollution monitoring station data to determine real-time campus air safety?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Crowdsourced social media travel blogs"
+      },
+      {
+        "id": "B",
+        "text": "The official Department of Environment APIMS portal (apims.doe.gov.my)"
+      },
+      {
+        "id": "C",
+        "text": "International weather apps with unknown sensor locations"
+      },
+      {
+        "id": "D",
+        "text": "Local food delivery apps"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "APIMS is Malaysia's statutory air quality monitoring system, maintaining certified ambient monitoring stations across Petaling and Klang Valley.",
+    "relatedLearningUnitId": "HAZE_01"
+  },
+  {
+    "id": "SQ_HAZE_06",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 6,
+    "isCampusSpecific": false,
+    "scenario": "Why is PM2.5 considered substantially more toxic to human organs than coarse particulate dust (PM10)?",
+    "options": [
+      {
+        "id": "A",
+        "text": "PM2.5 is radioactive"
+      },
+      {
+        "id": "B",
+        "text": "Sub-micron particles penetrate deep into pulmonary alveoli and cross directly into the bloodstream"
+      },
+      {
+        "id": "C",
+        "text": "PM2.5 particles are heavier than water"
+      },
+      {
+        "id": "D",
+        "text": "Coarse dust does not enter the nose"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "PM2.5 particles are small enough to bypass upper mucosal filtration, inducing systemic vascular inflammation and arterial damage.",
+    "relatedLearningUnitId": "HAZE_01"
+  },
+  {
+    "id": "SQ_HAZE_07",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 7,
+    "isCampusSpecific": false,
+    "scenario": "What prevailing seasonal monsoon wind pattern is responsible for transporting regional biomass fire smoke across the Strait of Malacca?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Southwest Monsoon (typically June to September)"
+      },
+      {
+        "id": "B",
+        "text": "Northeast Monsoon (November to March)"
+      },
+      {
+        "id": "C",
+        "text": "Polar Easterly drift"
+      },
+      {
+        "id": "D",
+        "text": "Siberian cold front"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Dry conditions during the Southwest Monsoon generate prevailing south-westerly wind trajectories carrying combustion plumes.",
+    "relatedLearningUnitId": "HAZE_02"
+  },
+  {
+    "id": "SQ_HAZE_08",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 8,
+    "isCampusSpecific": false,
+    "scenario": "Clinical epidemiology during regional haze crises shows immediate surges in hospital emergency admissions for which medical condition?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Bone fractures"
+      },
+      {
+        "id": "B",
+        "text": "Acute asthma exacerbations and ischemic cardiovascular events"
+      },
+      {
+        "id": "C",
+        "text": "Stomach ulcers"
+      },
+      {
+        "id": "D",
+        "text": "Ear infections"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Inhaled combustion aerosols aggravate bronchial hyperreactivity and provoke systemic vascular stress, accelerating heart attacks.",
+    "relatedLearningUnitId": "HAZE_03"
+  },
+  {
+    "id": "SQ_HAZE_09",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 9,
+    "isCampusSpecific": false,
+    "scenario": "Why do loose-fitting 3-ply surgical masks fail to protect pedestrians during high PM2.5 haze concentrations?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Air flows through the path of least resistance via side and nose gaps, bypassing the filter entirely"
+      },
+      {
+        "id": "B",
+        "text": "Surgical masks dissolve in humid air"
+      },
+      {
+        "id": "C",
+        "text": "The blue dye attracts smoke particulates"
+      },
+      {
+        "id": "D",
+        "text": "Surgical masks do not cover the eyes"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Without an airtight perimeter facial seal, microscopic aerosols easily enter respiratory pathways through lateral clearances.",
+    "relatedLearningUnitId": "HAZE_04"
+  },
+  {
+    "id": "SQ_HAZE_10",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 10,
+    "isCampusSpecific": false,
+    "scenario": "Under Malaysia's National Haze Action Plan, what API threshold triggers automatic closure of primary and secondary schools in an affected district?",
+    "options": [
+      {
+        "id": "A",
+        "text": "API > 50"
+      },
+      {
+        "id": "B",
+        "text": "API > 100"
+      },
+      {
+        "id": "C",
+        "text": "API > 200 (Very Unhealthy)"
+      },
+      {
+        "id": "D",
+        "text": "API > 500"
+      }
+    ],
+    "correctOptionId": "C",
+    "explanation": "When the API exceeds 200, schools are officially directed to suspend in-person classes and transition to home-based online learning.",
+    "relatedLearningUnitId": "HAZE_02"
+  },
+  {
+    "id": "SQ_HAZE_11",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 11,
+    "isCampusSpecific": false,
+    "scenario": "What primary combustible material in regional forest fires produces the dense, persistent white-grey smoke characteristic of transboundary haze?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Green bamboo leaves"
+      },
+      {
+        "id": "B",
+        "text": "Underground smoldering peat soils"
+      },
+      {
+        "id": "C",
+        "text": "Volcanic lava flows"
+      },
+      {
+        "id": "D",
+        "text": "Desert quartz sand"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Peatlands contain meters-deep organic biomass that undergoes low-temperature, incomplete smoldering combustion, emitting immense particulate loads.",
+    "relatedLearningUnitId": "HAZE_01"
+  },
+  {
+    "id": "SQ_HAZE_12",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 12,
+    "isCampusSpecific": false,
+    "scenario": "What immediate self-care step should contact lens wearers adopt when outdoor API levels climb into the Unhealthy range?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Switch to spectacles to prevent microscopic particle entrapment between the lens and cornea"
+      },
+      {
+        "id": "B",
+        "text": "Sleep with contact lenses on"
+      },
+      {
+        "id": "C",
+        "text": "Wash contact lenses in tap water"
+      },
+      {
+        "id": "D",
+        "text": "Wear dark sunglasses over contact lenses without removing them"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Atmospheric aerosols lodge beneath hydrogel lenses, causing mechanical corneal abrasions and severe secondary keratoconjunctivitis.",
+    "relatedLearningUnitId": "HAZE_03"
+  },
+  {
+    "id": "SQ_HAZE_13",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 13,
+    "isCampusSpecific": false,
+    "scenario": "How does a True HEPA (High-Efficiency Particulate Air) indoor filtration unit capture airborne PM2.5 particulates?",
+    "options": [
+      {
+        "id": "A",
+        "text": "By burning particulates with internal flame"
+      },
+      {
+        "id": "B",
+        "text": "Through a dense matrix of randomly arranged glass fibers that trap particles via impaction and diffusion"
+      },
+      {
+        "id": "C",
+        "text": "By spraying chemical disinfectants into the room"
+      },
+      {
+        "id": "D",
+        "text": "By freezing airborne water droplets"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "True HEPA filters capture ≥99.97% of microscopic particulates down to 0.3 microns through mechanical interception and Brownian diffusion.",
+    "relatedLearningUnitId": "HAZE_04"
+  },
+  {
+    "id": "SQ_HAZE_14",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 14,
+    "isCampusSpecific": false,
+    "scenario": "What is the descriptive classification of air quality when the Malaysian API is recorded between 51 and 100?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Good"
+      },
+      {
+        "id": "B",
+        "text": "Moderate"
+      },
+      {
+        "id": "C",
+        "text": "Unhealthy"
+      },
+      {
+        "id": "D",
+        "text": "Hazardous"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "0–50 is Good; 51–100 is Moderate; 101–200 is Unhealthy; 201–300 is Very Unhealthy; >300 is Hazardous.",
+    "relatedLearningUnitId": "HAZE_02"
+  },
+  {
+    "id": "SQ_HAZE_15",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 15,
+    "isCampusSpecific": false,
+    "scenario": "Why does vigorous outdoor endurance running pose elevated health risks during moderate-to-unhealthy haze episodes?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Exercise forces mouth-breathing and increases respiratory minute ventilation, pulling vastly more pollutants deep into the lungs"
+      },
+      {
+        "id": "B",
+        "text": "Sweat attracts smoke molecules to the face"
+      },
+      {
+        "id": "C",
+        "text": "Outdoor running lowers atmospheric visibility"
+      },
+      {
+        "id": "D",
+        "text": "Haze makes asphalt too slippery for running shoes"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Heavy ventilation bypasses natural nasal mucosal filtration, multiplying the total mass of toxic particulates deposited into bronchial tissues.",
+    "relatedLearningUnitId": "HAZE_03"
+  },
+  {
+    "id": "SQ_HAZE_16",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 16,
+    "isCampusSpecific": false,
+    "scenario": "When checking the fit of an N95 respirator mask before stepping outside, what test verifies an effective facial seal?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Blowing cigarette smoke into the mask"
+      },
+      {
+        "id": "B",
+        "text": "Performing a user seal check: inhaling sharply to see if the mask gently collapses without air leaking around borders"
+      },
+      {
+        "id": "C",
+        "text": "Checking if the straps feel loose and comfortable"
+      },
+      {
+        "id": "D",
+        "text": "Seeing if glasses fog up immediately"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Inhaling sharply creates negative pressure inside a properly fitted respirator; outward air escape or immediate eyewear fogging indicates seal failure.",
+    "relatedLearningUnitId": "HAZE_04"
+  },
+  {
+    "id": "SQ_HAZE_17",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 17,
+    "isCampusSpecific": false,
+    "scenario": "What chemical compounds commonly adhere to the surface of carbonaceous biomass haze particles, compounding toxicity?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Polycyclic Aromatic Hydrocarbons (PAHs) and heavy trace metals"
+      },
+      {
+        "id": "B",
+        "text": "Liquid nitrogen and helium gas"
+      },
+      {
+        "id": "C",
+        "text": "Pure distilled water crystals"
+      },
+      {
+        "id": "D",
+        "text": "Vitamin C and glucose"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Incomplete organic combustion coats soot cores with carcinogenic PAHs and oxidizing chemical intermediates.",
+    "relatedLearningUnitId": "HAZE_01"
+  },
+  {
+    "id": "SQ_HAZE_18",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 18,
+    "isCampusSpecific": false,
+    "scenario": "When an official API reading reaches 310 (Hazardous), what national emergency declaration may be enacted?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Immediate nationwide power disconnection"
+      },
+      {
+        "id": "B",
+        "text": "State of Haze Emergency with mandatory closure of non- essential offices and operations"
+      },
+      {
+        "id": "C",
+        "text": "Suspension of all municipal tap water services"
+      },
+      {
+        "id": "D",
+        "text": "Compulsory international flight diversions across the continent"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "Readings exceeding 300 indicate an acute environmental crisis where emergency containment protocols and widespread shutdowns occur.",
+    "relatedLearningUnitId": "HAZE_02"
+  },
+  {
+    "id": "SQ_HAZE_19",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 19,
+    "isCampusSpecific": false,
+    "scenario": "What simple daily measure helps flush irritated mucous membranes and throat tissues during prolonged smoke haze exposure?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Frequent oral hydration and gentle saline nasal/gargle rinses"
+      },
+      {
+        "id": "B",
+        "text": "Gargling with hot chili sauce"
+      },
+      {
+        "id": "C",
+        "text": "Inhaling steam from burning charcoal"
+      },
+      {
+        "id": "D",
+        "text": "Chewing dry chalk"
+      }
+    ],
+    "correctOptionId": "A",
+    "explanation": "Saline rinses and sustained oral hydration promote ciliary clearance of entrapped coarse particulates from upper pharyngeal surfaces.",
+    "relatedLearningUnitId": "HAZE_03"
+  },
+  {
+    "id": "SQ_HAZE_20",
+    "category": "HAZE_AIR_QUALITY",
+    "categoryOrder": 20,
+    "isCampusSpecific": false,
+    "scenario": "Why should air conditioning units in dormitories and automobiles never be set to \"Fresh Air / External Intake\" mode during dense haze?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Fresh air intake causes the cooling refrigerant to evaporate"
+      },
+      {
+        "id": "B",
+        "text": "It draws exterior contaminated smoke particles directly into the enclosed living space"
+      },
+      {
+        "id": "C",
+        "text": "External air makes the AC compressor run backwards"
+      },
+      {
+        "id": "D",
+        "text": "Air filters freeze instantly in humid air"
+      }
+    ],
+    "correctOptionId": "B",
+    "explanation": "External intake vents bypass room containment, drawing high concentrations of fine outdoor particulates directly into the cabin or bedroom.",
+    "relatedLearningUnitId": "HAZE_04"
+  }
+]
