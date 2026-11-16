@@ -50,6 +50,32 @@ All core algorithmic design, deterministic scoring mathematics, state machine un
 
 ---
 
+### Log Entry #002: Week 7 Core Dev Sprint 1 --- App Shell & Foundation
+* **Date:** 2026-11-16
+* **Member / Role:** Lau Wei Zhong (Role 1: Leader & Shell Lead)
+* **AI Tool Used:** Antigravity (Powered by Gemini)
+* **Task Objective:** Scaffold Android app shell, persistent BottomNavigationView with 5 module tabs, Home Dashboard with progress and status banners, 5 skeleton fragments, AssetDataManager data loader, and automated seed validation unit tests.
+* **Specific Prompts Inputted:**
+  ```text
+  start my task role 1, week 7
+  Implement Role 1 Foundations: BottomNavigationView with 5 tabs, Home Dashboard, 5 module fragments, AssetDataManager for JSON asset seeds, ViewBinding, and JUnit test suite.
+  ```
+* **AI Output Received:**
+  - ViewBinding & BuildConfig configuration in `app/build.gradle.kts`.
+  - Color palette (UM navy/gold & sustainability green) in `colors.xml`.
+  - 5 vector navigation drawables and `bottom_nav_menu.xml`.
+  - `MainActivity.kt` with fragment transaction routing.
+  - `HomeFragment.kt` & `fragment_home.xml` with dynamic progress bars and assessment score badge.
+  - 4 skeleton feature fragments (`AssessmentFragment`, `LearningFragment`, `QuizFragment`, `ResourcesFragment`).
+  - `AssetDataManager.kt` loading 4 pre-compiled JSON seeds from assets.
+  - `AssetSeedDataTest.kt` verifying all 18 M1, 12 M2, 60 M3, and 12 M5 records.
+* **Human Verification, Testing & Modification:**
+  - Executed `./gradlew testDebugUnitTest`: verified that all 4 asset schema tests passed with 100% assertions satisfied.
+  - Executed `./gradlew assembleDebug`: confirmed zero layout compilation errors and clean APK packaging.
+  - Checked Git branch separation (`feature/role1-app-shell`), keeping `develop` and `main` protected.
+
+---
+
 *(Team members: please append your sprint log entries below following this standard template after each completed feature)*
 
 ### Log Entry Template (Copy for new entries):
