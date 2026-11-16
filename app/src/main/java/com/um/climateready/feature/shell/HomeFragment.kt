@@ -1,5 +1,6 @@
 package com.um.climateready.feature.shell
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import com.um.climateready.MainActivity
 import com.um.climateready.R
 import com.um.climateready.core.database.AssetDataManager
 import com.um.climateready.databinding.FragmentHomeBinding
+import com.um.climateready.feature.assessment.AssessmentActivity
 
 class HomeFragment : Fragment() {
 
@@ -26,17 +28,38 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // 1. Setup Button Listeners
+        binding.btnTakeAssessment.setOnClickListener {
+            val intent = Intent(requireContext(), AssessmentActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnViewLessons.setOnClickListener {
+            (activity as? MainActivity)?.switchTab(R.id.navigation_learning)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateDashboardUI()
+    }
+
+    private fun updateDashboardUI() {
+        if (_binding == null) return
         val dataManager = AssetDataManager.getInstance(requireContext())
 
-        // 1. Update Learning Progress
+        // Update Learning Progress
         val completedCount = dataManager.getCompletedUnitsCount()
         binding.progressLearning.progress = completedCount
         binding.tvLearningProgressText.text = "$completedCount of 12 units completed"
 
-        // 2. Update Assessment Score Badge
+        // Update Assessment Card & Score Badge
         if (dataManager.hasCompletedPreAssessment()) {
             val score = dataManager.getPreAssessmentTotalScore()
             binding.tvAssessmentScoreBadge.text = "Score: $score / 9"
+            binding.btnTakeAssessment.text = "Retake Assessment"
+
             when {
                 score <= 3 -> {
                     binding.tvAssessmentScoreBadge.setTextColor(requireContext().getColor(R.color.score_red))
@@ -53,15 +76,7 @@ class HomeFragment : Fragment() {
             }
         } else {
             binding.tvAssessmentScoreBadge.text = "Not Assessed"
-        }
-
-        // 3. Quick Action Buttons
-        binding.btnTakeAssessment.setOnClickListener {
-            (activity as? MainActivity)?.switchTab(R.id.navigation_assessment)
-        }
-
-        binding.btnViewLessons.setOnClickListener {
-            (activity as? MainActivity)?.switchTab(R.id.navigation_learning)
+            binding.btnTakeAssessment.text = "Start Assessment"
         }
     }
 

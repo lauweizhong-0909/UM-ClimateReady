@@ -42,3 +42,4 @@ class QuizFragment : Fragment() {
         _binding = null
     }
 }
+

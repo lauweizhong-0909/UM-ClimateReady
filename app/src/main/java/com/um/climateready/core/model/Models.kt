@@ -61,3 +61,4 @@ data class ClimateResource(
     val lastVerifiedAt: String,
     val verificationStatus: String
 )
+

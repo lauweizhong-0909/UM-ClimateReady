@@ -42,3 +42,4 @@ class ResourcesFragment : Fragment() {
         _binding = null
     }
 }
+

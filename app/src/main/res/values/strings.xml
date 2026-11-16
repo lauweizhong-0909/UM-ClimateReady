@@ -4,9 +4,9 @@
     
     <!-- Navigation Items -->
     <string name="nav_home">Home</string>
-    <string name="nav_assessment">Assessment</string>
     <string name="nav_learning">Learn</string>
     <string name="nav_quiz">AI Quiz</string>
+    <string name="nav_explorer">Explorer</string>
     <string name="nav_resources">Directory</string>
     
     <!-- Home Dashboard -->
@@ -14,9 +14,9 @@
     <string name="home_welcome_subtitle">Universiti Malaya Student Preparedness Platform</string>
     <string name="home_status_live">LIVE • Petaling Jaya Station</string>
     <string name="home_status_condition">31°C | High Humidity (78%) | Moderate Rain Risk</string>
-    <string name="home_assessment_card_title">Climate Awareness Baseline</string>
-    <string name="home_assessment_card_desc">Complete the 9-question diagnostic to identify your climate vulnerability profile.</string>
-    <string name="home_btn_start_assessment">Start Pre-Assessment</string>
+    <string name="home_assessment_card_title">Climate Awareness Assessment</string>
+    <string name="home_assessment_card_desc">Take the 9-question diagnostic quiz to establish your baseline and get personalized study recommendations.</string>
+    <string name="home_btn_start_assessment">Start Assessment</string>
     <string name="home_learning_card_title">Micro-Learning Units</string>
     <string name="home_learning_progress_format">%1$d of 12 units completed</string>
     <string name="home_btn_resume_learning">Continue Learning</string>

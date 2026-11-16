@@ -41,15 +41,11 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // Setup BottomNavigationView
+        // Setup BottomNavigationView (5 Tabs: Home, Learn, AI Quiz, Explorer, Directory)
         binding.bottomNavigation.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.navigation_home -> {
                     replaceFragment(HomeFragment())
-                    true
-                }
-                R.id.navigation_assessment -> {
-                    replaceFragment(AssessmentFragment())
                     true
                 }
                 R.id.navigation_learning -> {
@@ -58,6 +54,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.navigation_quiz -> {
                     replaceFragment(QuizFragment())
+                    true
+                }
+                R.id.navigation_explorer -> {
+                    replaceFragment(com.um.climateready.feature.explorer.ExplorerFragment())
                     true
                 }
                 R.id.navigation_resources -> {

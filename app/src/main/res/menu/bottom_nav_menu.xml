@@ -6,11 +6,6 @@
         android:title="@string/nav_home" />
 
     <item
-        android:id="@+id/navigation_assessment"
-        android:icon="@drawable/ic_nav_assessment"
-        android:title="@string/nav_assessment" />
-
-    <item
         android:id="@+id/navigation_learning"
         android:icon="@drawable/ic_nav_learning"
         android:title="@string/nav_learning" />
@@ -19,6 +14,11 @@
         android:id="@+id/navigation_quiz"
         android:icon="@drawable/ic_nav_quiz"
         android:title="@string/nav_quiz" />
+
+    <item
+        android:id="@+id/navigation_explorer"
+        android:icon="@drawable/ic_nav_explorer"
+        android:title="@string/nav_explorer" />
 
     <item
         android:id="@+id/navigation_resources"
