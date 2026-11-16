@@ -75,7 +75,26 @@ All core algorithmic design, deterministic scoring mathematics, state machine un
   - Checked Git branch separation (`feature/role1-app-shell`), keeping `develop` and `main` protected.
 
 ---
-
+### Log Entry #003: Week 7 Core Dev Sprint 1 — Module 5 UM Climate Resources
+* **Date:** 2026-11-16
+* **Member / Role:** Hon Chi Fung(Role 6: Explorer & Directory Lead)
+* **AI Tool Used:** Muse
+* **Task Objective:** Implement Module 5 directory: display 12 verified resources as cards, with real-time search, category chip filtering (AND logic), empty state, and Call / Visit Portal intents.
+* **Specific Prompts Inputted:**
+  ```text
+  Guide me step-by-step to build Module 5 in Android Studio: item_resource_card layout, ResourceAdapter, connecting ResourcesFragment to AssetDataManager, ResourceFilter search/category logic, chips and empty state in fragment_resources.xml, and a ResourceFilter unit test.
+  ```
+* **AI Output Received:**
+  - item_resource_card.xml: MaterialCardView with name, verified badge, description, organisation, hotline, Call / Visit buttons.
+  - ResourceAdapter.kt: RecyclerView adapter binding ClimateResource data, ACTION_DIAL for hotlines (with N/A handling) and ACTION_VIEW for portals.
+  - ResourceFilter.kt: Pure filter function matching query against name/description/organisation AND category.
+  - Updated ResourcesFragment.kt and fragment_resources.xml: search TextWatcher, category ChipGroup, empty-state view.
+  - ResourceFilterTest.kt: 5 JUnit tests for the filter logic.
+* **Human Verification, Testing & Modification:**
+  - Ran the app on Medium Phone API 37 emulator: verified all 12 cards load, Call opens the dialer and Visit opens the browser.
+  - Manually tested search + chips: All = 12 cards, Heavy Rain = 3 cards, "clinic" + Heavy Rain = empty state, "clinic" + Extreme Heat = PKU UM and MOH (matched "clinical").
+  - Executed testDebugUnitTest --tests "*ResourceFilterTest*": BUILD SUCCESSFUL, all tests passed.
+  - Also verified Module 4 Explorer on the emulator: 6-step greenhouse walkthrough and +1.5°C/+2°C/+3°C scenario chips display correctly.
 *(Team members: please append your sprint log entries below following this standard template after each completed feature)*
 
 ### Log Entry Template (Copy for new entries):
