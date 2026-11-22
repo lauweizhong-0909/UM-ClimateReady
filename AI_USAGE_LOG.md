@@ -19,7 +19,7 @@ All core algorithmic design, deterministic scoring mathematics, state machine un
 | Role | Responsibility | Assigned Member | Matric No. |
 | :--- | :--- | :--- | :--- |
 | **Role 1 (Leader)** | App Shell, Navigation Architecture, Base Room DB & Integration | Lau Wei Zhong | 25006511 |
-| **Role 2** | Module 1: Climate Awareness Assessment | [Team Member 2] | [Matric No.] |
+| **Role 2** | Module 1: Climate Awareness Assessment | Yip Zheng Xyun | 25006747 |
 | **Role 3** | Module 2: Climate Micro-Learning Curriculum | [Team Member 3] | [Matric No.] |
 | **Role 4** | Module 3: AI Scenario Quiz & JSON Validation Pipeline | [Team Member 4] | [Matric No.] |
 | **Role 5** | Client API Adapters, Trigger Logic & Secure Key Config | [Team Member 5] | [Matric No.] |
@@ -95,6 +95,27 @@ All core algorithmic design, deterministic scoring mathematics, state machine un
   - Manually tested search + chips: All = 12 cards, Heavy Rain = 3 cards, "clinic" + Heavy Rain = empty state, "clinic" + Extreme Heat = PKU UM and MOH (matched "clinical").
   - Executed testDebugUnitTest --tests "*ResourceFilterTest*": BUILD SUCCESSFUL, all tests passed.
   - Also verified Module 4 Explorer on the emulator: 6-step greenhouse walkthrough and +1.5°C/+2°C/+3°C scenario chips display correctly.
+
+---
+
+### Log Entry #004: Week 7–8 Core Dev Sprint — Module 1 Climate Awareness Assessment
+* **Date:** 2026-11-22
+* **Member / Role:** Yip Zheng Xyun (Role 2: Assessment Lead — Module 1)
+* **AI Tool Used:** Antigravity (Powered by Gemini)
+* **Task Objective:** Implement Module 1 Climate Awareness Assessment including pure deterministic scoring (`ScoringEngine`), Red/Yellow/Green color band mapping (`ResultColorMapper`), persisted Pre/Post attempts (`AssessmentRepository`), 4 ViewBinding UI screens (Hub, 9-MCQ Quiz, Result + Recommendation + Review, Pre vs Post Comparison), anonymous result sharing, and exhaustive 512-combination JUnit verification.
+* **Specific Prompts Inputted:**
+  ```text
+  I am the assessment lead, built the assessments [referencing WIA2007 MADev Occ3 Google Drive folder]
+  ```
+* **AI Output Received:**
+  - `ResultColorMapper.kt` & `ScoringEngine.kt`: Deterministic 0–3 category & 0–9 total scoring, Red (0–1) / Yellow (2) / Green (3) bands with text labels, weakest-category recommendation with `HEAVY_RAIN > EXTREME_HEAT > HAZE_AIR_QUALITY` tie-breaking, Post-Test unlock validation (`>=9` total units AND `>=2` per category), neutral Pre vs Post comparison, anonymous share text builder, and PDF artifact text sanitizer.
+  - `AssessmentRepository.kt` & `AssessmentViewModel.kt`: Persists full Pre/Post attempts via `SharedPreferences` + `Gson`, syncs Pre-Assessment summary with `AssetDataManager` for Home Dashboard, and preserves quiz state across configuration changes.
+  - 4 XML + ViewBinding screens (`AssessmentFragment`, `AssessmentQuizFragment`, `AssessmentResultFragment`, `AssessmentComparisonFragment`) hosted by `AssessmentActivity`, plus targeted navigation intent to Micro-Learning in `MainActivity`.
+  - `ScoringEngineTest.kt`: Exhaustive 512-combination ($2^9$) scoring & color-band test, boundary tests, tie-breaking recommendation tests, Post-Test unlock threshold tests, neutral comparison & zero-PII sharing tests, and seed text sanitization tests.
+* **Human Verification, Testing & Modification:**
+  - Verified against Module 1 Assessment Question Bank PDF, Complete Development Plan V1 (Section 4), and AI Engineering Guide V2 (Section 5.3).
+  - Executed `./gradlew testDebugUnitTest --tests "*ScoringEngineTest*"`, `./gradlew testDebugUnitTest`, and `./gradlew assembleDebug` to confirm all unit tests pass and debug APK compiles cleanly.
+
 *(Team members: please append your sprint log entries below following this standard template after each completed feature)*
 
 ### Log Entry Template (Copy for new entries):

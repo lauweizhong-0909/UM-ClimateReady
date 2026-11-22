@@ -1,5 +1,6 @@
 package com.um.climateready
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -70,7 +71,17 @@ class MainActivity : AppCompatActivity() {
 
         // Set default fragment on first launch
         if (savedInstanceState == null) {
-            binding.bottomNavigation.selectedItemId = R.id.navigation_home
+            val targetTab = intent.getIntExtra(EXTRA_TARGET_TAB, R.id.navigation_home)
+            binding.bottomNavigation.selectedItemId = targetTab
+        }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        val targetTab = intent.getIntExtra(EXTRA_TARGET_TAB, -1)
+        if (targetTab != -1) {
+            switchTab(targetTab)
         }
     }
 
@@ -82,5 +93,10 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.nav_host_fragment, fragment)
             .commit()
+    }
+
+    companion object {
+        const val EXTRA_TARGET_TAB = "extra_target_tab"
+        const val EXTRA_RECOMMENDED_UNIT_ID = "extra_recommended_unit_id"
     }
 }
