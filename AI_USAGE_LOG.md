@@ -116,6 +116,45 @@ All core algorithmic design, deterministic scoring mathematics, state machine un
   - Verified against Module 1 Assessment Question Bank PDF, Complete Development Plan V1 (Section 4), and AI Engineering Guide V2 (Section 5.3).
   - Executed `./gradlew testDebugUnitTest --tests "*ScoringEngineTest*"`, `./gradlew testDebugUnitTest`, and `./gradlew assembleDebug` to confirm all unit tests pass and debug APK compiles cleanly.
 
+### Log Entry #005: Week 7 Core Dev Sprint 1 — Module 2 Climate Micro-Learning
+* **Date:** 2026-11-22
+* **Member / Role:** Tan Sze Yung (Role 3: Micro-Learning Lead — Module 2)
+* **AI Tool Used:** Antigravity (Claude Sonnet 4.6)
+* **Task Objective:** Implement Module 2 Micro-Learning full UI: `LearningRepository`, `LessonAdapter` with category filter chips, progress header LinearProgressIndicator, `LessonDetailBottomSheet` with CCNA interactive knowledge check (instant green/red colour feedback), Mark as Completed toggle with SharedPreferences persistence, and `MicroLearningTest.kt` JUnit suite (13 tests).
+* **Specific Prompts Inputted:**
+  ```text
+  /plan I am the Micro-Learning (M2) Lead for UM-ClimateReady.
+  First, read @docs/DEVELOPMENT_PLAN_AI_GUIDE.md, @README.md, and @AI_USAGE_LOG.md to check
+  the exact Week 7 deliverables, architecture rules, and AI logging requirements for Module 2
+  (Micro-Learning). Next, inspect: @app/src/main/assets/data/m2_microlearning_units.json,
+  @app/src/main/java/com/um/climateready/core/database/AssetDataManager.kt,
+  @app/src/main/java/com/um/climateready/core/model/Models.kt,
+  @app/src/main/java/com/um/climateready/feature/resources/ (reference),
+  @app/src/main/java/com/um/climateready/feature/learning/LearningFragment.kt,
+  @app/src/main/res/layout/fragment_learning.xml.
+  Create an implementation plan for Week 7 Micro-Learning feature [5 tasks listed].
+  ```
+  *(After plan was approved, implementation was triggered immediately.)*
+* **AI Output Received:**
+  - `data/repository/LearningRepository.kt`: MVVM repository wrapper with `getFilteredUnits()`, `toggleCompletion()`, `getCompletedCountByCategory()`, and `isPostTestUnlocked()`.
+  - `feature/learning/LessonAdapter.kt`: RecyclerView adapter following `ResourceAdapter` pattern; binds unit number, category badge, title, snippet, and ✓ completion icon.
+  - `res/layout/item_lesson_card.xml`: MaterialCardView with ConstraintLayout for unit number badge, category chip, title, summary snippet, and right-side completion tick.
+  - `feature/learning/LessonDetailBottomSheet.kt`: BottomSheetDialogFragment displaying full summary, real-world example, UM student tip, 4-button CCNA knowledge check with instant green/red colour feedback, key takeaway banner, and Mark as Completed toggle.
+  - `res/layout/bottom_sheet_lesson_detail.xml`: NestedScrollView full-lesson layout with all content sections.
+  - Updated `feature/learning/LearningFragment.kt`: Full implementation replacing stub — LearningRepository wired, chip filter sets `selectedCategory`, `applyFilter()` feeds adapter, `updateProgressHeader()` drives LinearProgressIndicator; `openLessonDetail()` shows bottom sheet with dismiss callback.
+  - Updated `res/layout/fragment_learning.xml`: Added progress header card (LinearProgressIndicator + "X/12 completed" label) above chip group.
+  - `drawable/ic_check_circle.xml` and `drawable/bg_unit_number.xml`: Vector drawables used by lesson cards.
+  - `test/.../MicroLearningTest.kt`: 13 pure JUnit tests (7 JSON parsing, 6 progress tracking logic).
+* **Human Verification, Testing & Modification:**
+  - Reviewed all generated Kotlin files for correctness against the JSON schema, `AssetDataManager` API, and `ResourceAdapter`/`ResourcesFragment` reference patterns.
+  - Verified `LessonDetailBottomSheet` dismiss callback correctly refreshes `LearningFragment` adapter and progress bar.
+  - Verified CCNA option buttons are disabled after first selection (no re-answering) and correct answer is always highlighted green even if wrong option is tapped.
+  - Executed: `./gradlew testDebugUnitTest --tests "*MicroLearningTest*"` — verify all 13 tests pass.
+  - Executed: `./gradlew assembleDebug` — verify zero compilation errors and clean APK.
+  - Manually tested on emulator: chip filter, card list, bottom sheet scroll, CCNA colour feedback, Mark Complete toggle, progress bar update.
+
+---
+
 *(Team members: please append your sprint log entries below following this standard template after each completed feature)*
 
 ### Log Entry Template (Copy for new entries):
