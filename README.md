@@ -45,7 +45,7 @@ Aligned with **United Nations Sustainable Development Goal 13 (Climate Action - 
 | Role | Domain / Module | Assigned Member | Matric No. |
 | :--- | :--- | :--- | :--- |
 | **Role 1 (Leader)** | App Shell, Navigation Architecture, Base Room DB & Integration | Lau Wei Zhong | 25006511 |
-| **Role 2** | Module 1: Climate Awareness Assessment | [Team Member 2] | [Matric No.] |
+| **Role 2** | Module 1: Climate Awareness Assessment | Yip Zheng Xyun | 25006747 |
 | **Role 3** | Module 2: Climate Micro-Learning Curriculum | [Team Member 3] | [Matric No.] |
 | **Role 4** | Module 3: AI Scenario Quiz & JSON Validation Pipeline | [Team Member 4] | [Matric No.] |
 | **Role 5** | Client API Adapters, Trigger Logic & Secure Key Config | [Team Member 5] | [Matric No.] |
