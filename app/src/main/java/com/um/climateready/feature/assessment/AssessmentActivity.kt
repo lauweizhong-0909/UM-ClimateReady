@@ -1,23 +1,25 @@
 package com.um.climateready.feature.assessment
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import com.um.climateready.core.database.AssetDataManager
-import com.um.climateready.core.model.AssessmentQuestion
+import androidx.fragment.app.Fragment
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.um.climateready.MainActivity
+import com.um.climateready.R
+import com.um.climateready.core.util.ScoringEngine
 import com.um.climateready.databinding.ActivityAssessmentBinding
 
 class AssessmentActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAssessmentBinding
-    private lateinit var dataManager: AssetDataManager
-    private var preQuestions: List<AssessmentQuestion> = emptyList()
-    private var currentIndex = 0
-    private val userAnswers = mutableMapOf<Int, String>() // questionIndex -> selectedOptionId
+    private val viewModel: AssessmentViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
@@ -31,110 +33,144 @@ class AssessmentActivity : AppCompatActivity() {
             val displayCutout = insets.getInsets(WindowInsetsCompat.Type.displayCutout())
             val topPadding = maxOf(systemBars.top, displayCutout.top)
             binding.toolbarAssessment.setPadding(0, topPadding, 0, 0)
-            binding.layoutBottomAction.setPadding(0, 0, 0, systemBars.bottom)
+            binding.assessmentFragmentContainer.setPadding(
+                systemBars.left,
+                0,
+                systemBars.right,
+                systemBars.bottom
+            )
             insets
         }
 
         binding.toolbarAssessment.setNavigationOnClickListener {
-            finish()
+            handleBackNavigation()
         }
 
-        dataManager = AssetDataManager.getInstance(this)
-        preQuestions = dataManager.assessmentQuestions.filter { it.type == "PRE" }
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                handleBackNavigation()
+            }
+        })
 
-        if (preQuestions.isEmpty()) {
-            Toast.makeText(this, "No pre-assessment questions found", Toast.LENGTH_SHORT).show()
-            finish()
+        if (savedInstanceState == null) {
+            when (intent.getStringExtra(EXTRA_INITIAL_MODE)) {
+                MODE_START_PRE -> viewModel.startAssessment(ScoringEngine.TYPE_PRE)
+                MODE_START_POST -> viewModel.startAssessment(ScoringEngine.TYPE_POST)
+                MODE_COMPARISON -> {
+                    if (!viewModel.openComparison()) {
+                        viewModel.returnToHub()
+                    }
+                }
+                else -> viewModel.returnToHub()
+            }
+        }
+
+        viewModel.currentScreen.observe(this) { screen ->
+            renderScreen(screen)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (viewModel.currentScreen.value == AssessmentScreen.HUB) {
+            viewModel.refreshHubState()
+        }
+    }
+
+    private fun renderScreen(screen: AssessmentScreen) {
+        val (tag, title, fragmentFactory) = when (screen) {
+            AssessmentScreen.HUB -> Triple(
+                TAG_HUB,
+                "Climate Awareness Assessment",
+                { AssessmentFragment() }
+            )
+            AssessmentScreen.QUIZ -> {
+                val quizTitle = if (viewModel.activeType.value == ScoringEngine.TYPE_POST) {
+                    "Post-Assessment (9 MCQs)"
+                } else {
+                    "Pre-Assessment (9 MCQs)"
+                }
+                Triple(TAG_QUIZ, quizTitle, { AssessmentQuizFragment() })
+            }
+            AssessmentScreen.RESULT -> {
+                val resultTitle = if (viewModel.activeType.value == ScoringEngine.TYPE_POST) {
+                    "Post-Assessment Results"
+                } else {
+                    "Pre-Assessment Results"
+                }
+                Triple(TAG_RESULT, resultTitle, { AssessmentResultFragment() })
+            }
+            AssessmentScreen.COMPARISON -> Triple(
+                TAG_COMPARISON,
+                "Pre vs Post Comparison",
+                { AssessmentComparisonFragment() }
+            )
+        }
+
+        binding.toolbarAssessment.title = title
+
+        val existing = supportFragmentManager.findFragmentById(R.id.assessment_fragment_container)
+        if (existing != null && existing.tag == tag) {
             return
         }
 
-        displayQuestion(currentIndex)
+        val nextFragment: Fragment = fragmentFactory()
+        supportFragmentManager.beginTransaction()
+            .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+            .replace(R.id.assessment_fragment_container, nextFragment, tag)
+            .commit()
+    }
 
-        binding.btnNextQuestion.setOnClickListener {
-            val selectedOptionId = getSelectedOptionId()
-            if (selectedOptionId == null) {
-                Toast.makeText(this, "Please select an answer", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+    private fun handleBackNavigation() {
+        when (viewModel.currentScreen.value) {
+            AssessmentScreen.QUIZ -> {
+                MaterialAlertDialogBuilder(this)
+                    .setTitle("Leave Assessment?")
+                    .setMessage("Your current progress in this 9-question attempt has not been submitted yet. Return to the assessment hub?")
+                    .setNegativeButton("Continue Quiz", null)
+                    .setPositiveButton("Leave") { _, _ ->
+                        viewModel.returnToHub()
+                    }
+                    .show()
             }
-
-            userAnswers[currentIndex] = selectedOptionId
-
-            if (currentIndex < preQuestions.size - 1) {
-                currentIndex++
-                displayQuestion(currentIndex)
-            } else {
-                finishAssessment()
+            AssessmentScreen.RESULT, AssessmentScreen.COMPARISON -> {
+                viewModel.returnToHub()
             }
+            else -> finish()
         }
     }
 
-    private fun displayQuestion(index: Int) {
-        val q = preQuestions[index]
-        binding.tvQuestionProgress.text = "Question ${index + 1} of ${preQuestions.size}"
-        binding.tvCategoryTag.text = q.category.replace("_", " ")
-        binding.tvQuestionTitle.text = q.title
-        binding.tvQuestionBody.text = q.question
-
-        binding.rgOptions.clearCheck()
-
-        if (q.options.size >= 4) {
-            binding.rbOptA.text = "A) ${q.options[0].text}"
-            binding.rbOptB.text = "B) ${q.options[1].text}"
-            binding.rbOptC.text = "C) ${q.options[2].text}"
-            binding.rbOptD.text = "D) ${q.options[3].text}"
-        }
-
-        val previousAnswer = userAnswers[index]
-        when (previousAnswer) {
-            "A" -> binding.rbOptA.isChecked = true
-            "B" -> binding.rbOptB.isChecked = true
-            "C" -> binding.rbOptC.isChecked = true
-            "D" -> binding.rbOptD.isChecked = true
-        }
-
-        if (index == preQuestions.size - 1) {
-            binding.btnNextQuestion.text = "Submit Assessment"
-        } else {
-            binding.btnNextQuestion.text = "Next Question"
-        }
-    }
-
-    private fun getSelectedOptionId(): String? {
-        return when (binding.rgOptions.checkedRadioButtonId) {
-            binding.rbOptA.id -> "A"
-            binding.rbOptB.id -> "B"
-            binding.rbOptC.id -> "C"
-            binding.rbOptD.id -> "D"
-            else -> null
-        }
-    }
-
-    private fun finishAssessment() {
-        var totalScore = 0
-        var rainScore = 0
-        var heatScore = 0
-        var hazeScore = 0
-
-        for (i in preQuestions.indices) {
-            val q = preQuestions[i]
-            val answer = userAnswers[i]
-            if (answer != null && answer.equals(q.correctOptionId, ignoreCase = true)) {
-                totalScore++
-                when (q.category) {
-                    "HEAVY_RAIN" -> rainScore++
-                    "EXTREME_HEAT" -> heatScore++
-                    "HAZE_AIR_QUALITY" -> hazeScore++
-                }
+    fun navigateToMicroLearning(recommendedUnitId: String? = null) {
+        val intent = Intent(this, MainActivity::class.java).apply {
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            putExtra(MainActivity.EXTRA_TARGET_TAB, R.id.navigation_learning)
+            if (recommendedUnitId != null) {
+                putExtra(MainActivity.EXTRA_RECOMMENDED_UNIT_ID, recommendedUnitId)
             }
         }
-
-        dataManager.savePreAssessmentScore(totalScore, rainScore, heatScore, hazeScore)
-        Toast.makeText(
-            this,
-            "Assessment Complete! Score: $totalScore / ${preQuestions.size}",
-            Toast.LENGTH_LONG
-        ).show()
+        startActivity(intent)
         finish()
     }
-}
 
+    fun shareAnonymousSummary(summaryText: String, chooserTitle: String) {
+        val sendIntent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_SUBJECT, "UM ClimateReady Assessment Summary")
+            putExtra(Intent.EXTRA_TEXT, summaryText)
+        }
+        startActivity(Intent.createChooser(sendIntent, chooserTitle))
+    }
+
+    companion object {
+        const val EXTRA_INITIAL_MODE = "extra_assessment_initial_mode"
+        const val MODE_HUB = "HUB"
+        const val MODE_START_PRE = "START_PRE"
+        const val MODE_START_POST = "START_POST"
+        const val MODE_COMPARISON = "COMPARISON"
+
+        private const val TAG_HUB = "assessment_hub"
+        private const val TAG_QUIZ = "assessment_quiz"
+        private const val TAG_RESULT = "assessment_result"
+        private const val TAG_COMPARISON = "assessment_comparison"
+    }
+}
