@@ -3,7 +3,7 @@ package com.um.climateready.feature.quiz
 
 import androidx.lifecycle.ViewModel
 
-data class ScenarioQuestion(
+data class QuizUiQuestion(
     val question: String,
     val options: Map<String, String>,
     val correctAnswer: String,
@@ -12,7 +12,7 @@ data class ScenarioQuestion(
 
 class ScenarioQuizViewModel : ViewModel() {
 
-    private val questions = mutableListOf<ScenarioQuestion>()
+    private val questions = mutableListOf<QuizUiQuestion>()
 
     var currentQuestionIndex = 0
         private set
@@ -25,13 +25,13 @@ class ScenarioQuizViewModel : ViewModel() {
 
     val totalQuestions = 3
 
-    fun addQuestion(question: ScenarioQuestion): Boolean {
+    fun addQuestion(question: QuizUiQuestion): Boolean {
         if (questions.size >= totalQuestions) return false
         questions.add(question)
         return true
     }
 
-    fun getCurrentQuestion(): ScenarioQuestion? {
+    fun getCurrentQuestion(): QuizUiQuestion? {
         return questions.getOrNull(currentQuestionIndex)
     }
 

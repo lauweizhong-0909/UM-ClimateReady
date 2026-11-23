@@ -155,6 +155,37 @@ All core algorithmic design, deterministic scoring mathematics, state machine un
 
 ---
 
+### Log Entry #006: Week 7 Core Dev Sprint 1 — Module 3 AI Scenario Quiz Pipeline & Fallback
+* **Date:** 2026-11-23
+* **Member / Role:** Lin Shaojie (Role 4: AI Quiz Lead — Module 3)
+* **AI Tool Used:** Android Studio AI / Gemini
+* **Task Objective:** Implement Module 3 AI Scenario Quiz pipeline: OkHttp client with strict 8-second timeout, `AiJsonValidator` JSON schema verification, safe offline fallback to 60-question seed bank, deterministic scoring (AI never scores), and `AiJsonValidatorTest` unit test suite.
+* **Specific Prompts Inputted:**
+  ```text
+  Role 4 Assignment: Module 3 Scenario Quiz, Gemini Client & JSON Validator.
+  Please generate Kotlin code for:
+  1. AiJsonValidator.kt: Pure Kotlin validator that checks JSON structure, ensuring 4 options (A, B, C, D), correctOptionId, and non-empty rationale/explanation.
+  2. AiQuestionClient.kt: OkHttp client with 8-second timeout, calling Gemini REST API. On any HTTP error, malformed JSON, or timeout, catch exception and return null for safe fallback.
+  3. ScenarioQuizViewModel.kt: Manages 3-question session state, selected answer, deterministic score calculation, and explanation display.
+  4. QuizFragment.kt & fragment_quiz.xml: 3-question interactive quiz session with radio options, immediate explanation, and final score summary.
+  Kotlin + ViewBinding only.
+  ```
+* **AI Output Received:**
+  - `AiJsonValidator.kt`: Pure validator checking `question`, `options` (A, B, C, D non-blank), `correctAnswer` in choices, and non-empty explanation.
+  - `AiQuestionClient.kt`: OkHttpClient with 8-second connect, read, write, and call timeouts; constructs Gemini REST API payload and validates JSON response via `AiJsonValidator`.
+  - `ScenarioQuizViewModel.kt`: MVVM ViewModel managing 3-question session, selected answer, and deterministic scoring (`score++`).
+  - `QuizFragment.kt` & `fragment_quiz.xml`: Interactive quiz UI loading 3 shuffled scenarios from `AssetDataManager` 60-seed repository, with option buttons, rationale display, and score summary card.
+  - `AiJsonValidatorTest.kt`: 10 JUnit tests verifying valid JSON, answer choice bounds, malformed syntax, missing fields, option count, blank options, and invalid answers.
+* **Human Verification, Testing & Modification:**
+  - Verified NFR1 compliance: verified OkHttp client enforces 8-second network timeout.
+  - Verified deterministic scoring: scoring is calculated locally (`score++`), ensuring AI never scores or judges student responses.
+  - Refactored UI model to `QuizUiQuestion` to avoid shadowing core model `com.um.climateready.core.model.ScenarioQuestion`.
+  - Added `org.json:json` dependency for clean local JVM unit testing.
+  - Executed `./gradlew testDebugUnitTest --tests "*AiJsonValidatorTest*"`: all 10 tests passed.
+  - Executed `./gradlew testDebugUnitTest` and `./gradlew assembleDebug`: all suites passed, APK built cleanly.
+
+---
+
 *(Team members: please append your sprint log entries below following this standard template after each completed feature)*
 
 ### Log Entry Template (Copy for new entries):

@@ -74,7 +74,7 @@ class QuizFragment : Fragment() {
 
         selectedQuestions.forEach { source ->
             viewModel.addQuestion(
-                ScenarioQuestion(
+                QuizUiQuestion(
                     question = source.scenario,
                     options = source.options.associate {
                         it.id to it.text
