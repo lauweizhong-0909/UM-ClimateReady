@@ -20,10 +20,10 @@ All core algorithmic design, deterministic scoring mathematics, state machine un
 | :--- | :--- | :--- | :--- |
 | **Role 1 (Leader)** | App Shell, Navigation Architecture, Base Room DB & Integration | Lau Wei Zhong | 25006511 |
 | **Role 2** | Module 1: Climate Awareness Assessment | Yip Zheng Xyun | 25006747 |
-| **Role 3** | Module 2: Climate Micro-Learning Curriculum | [Team Member 3] | [Matric No.] |
-| **Role 4** | Module 3: AI Scenario Quiz & JSON Validation Pipeline | [Team Member 4] | [Matric No.] |
+| **Role 3** | Module 2: Climate Micro-Learning Curriculum | Tan Sze Yung | 25005884 |
+| **Role 4** | Module 3: AI Scenario Quiz & JSON Validation Pipeline | Lin Shaojie | 24040026 |
 | **Role 5** | Client API Adapters, Trigger Logic & Secure Key Config | [Team Member 5] | [Matric No.] |
-| **Role 6** | Modules 4 & 5: Global Warming Explorer & UM Climate Directory | [Team Member 6] | [Matric No.] |
+| **Role 6** | Modules 4 & 5: Global Warming Explorer & UM Climate Directory | Hon Chi Fung | 25006047 |
 
 ---
 
@@ -183,6 +183,31 @@ All core algorithmic design, deterministic scoring mathematics, state machine un
   - Added `org.json:json` dependency for clean local JVM unit testing.
   - Executed `./gradlew testDebugUnitTest --tests "*AiJsonValidatorTest*"`: all 10 tests passed.
   - Executed `./gradlew testDebugUnitTest` and `./gradlew assembleDebug`: all suites passed, APK built cleanly.
+
+---
+
+### Log Entry #007: Week 7 Core Dev Sprint 1 — Leader Shell & Multi-Module Dashboard Integration
+* **Date:** 2026-11-23
+* **Member / Role:** Lau Wei Zhong (Role 1: Leader & Shell Lead)
+* **AI Tool Used:** Antigravity (Powered by Gemini)
+* **Task Objective:** Integrate all completed feature modules (Module 1 Assessment, Module 2 Micro-Learning, Module 3 AI Quiz, Module 4 Explorer, Module 5 Directory) into a cohesive Home Dashboard hub, wire `AssessmentRepository` & `LearningRepository` to drive real-time progress & post-test unlock status, add quick explore action cards, handle system bar window insets, resolve cross-module PR merges, and verify build integrity.
+* **Specific Prompts Inputted:**
+  ```text
+  do this week task for my role
+  Integrate all 5 modules into MainActivity navigation and HomeFragment dashboard.
+  Connect AssessmentRepository for dynamic Pre/Post assessment card state and unlock status.
+  Add quick navigation action cards for AI Quiz, Global Warming Explorer, and Emergency Directory.
+  Verify edge-to-edge window insets, run full test suite, and ensure clean production release build.
+  ```
+* **AI Output Received:**
+  - `fragment_home.xml`: Refactored layout featuring welcome branding card, live environmental status banner, dynamic assessment card with post-test unlock indicator, micro-learning progress indicator, and 3 quick-action feature cards (AI Quiz, Global Warming Explorer, Climate Resources).
+  - `HomeFragment.kt`: Connected `AssessmentRepository` and `LearningRepository` to evaluate attempt state (Pre vs Post vs Unlocked), apply dynamic score badge color mapping via `ResultColorMapper`, and wire navigation callbacks to `MainActivity.switchTab()`.
+  - `MainActivity.kt`: Configured `ViewCompat.setOnApplyWindowInsetsListener` to pad top status bar / camera notch and bottom navigation gesture bar cleanly for all screens.
+  - Team integration: Merged PR #3, PR #4, PR #5, and PR #6 into `main` and `develop` branches; resolved naming shadowing in Module 3.
+* **Human Verification, Testing & Modification:**
+  - Ran `./gradlew testDebugUnitTest` verifying 100% pass across all unit tests (`ScoringEngineTest`, `MicroLearningTest`, `ResourceFilterTest`, `AssetSeedDataTest`, `AiJsonValidatorTest`).
+  - Ran `./gradlew assembleDebug` verifying zero compilation errors, no duplicate resources, and clean APK output.
+  - Verified navigation transitions on emulator across all 5 bottom navigation tabs and quick action cards.
 
 ---
 
