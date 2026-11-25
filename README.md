@@ -48,7 +48,7 @@ Aligned with **United Nations Sustainable Development Goal 13 (Climate Action - 
 | **Role 2** | Module 1: Climate Awareness Assessment | Yip Zheng Xyun  | 25006747     |
 | **Role 3** | Module 2: Climate Micro-Learning Curriculum | Tan Sze Yung    | 25005884     |
 | **Role 4** | Module 3: AI Scenario Quiz & JSON Validation Pipeline | Lin Shaojie     | 24040026     |
-| **Role 5** | Client API Adapters, Trigger Logic & Secure Key Config | [Team Member 5] | [Matric No.] |
+| **Role 5** | Client API Adapters, Trigger Logic & Secure Key Config | Loo Jiun Wei | 25006149     |
 | **Role 6** | Modules 4 & 5: Global Warming Explorer & UM Climate Directory | Hon Chi Fung    | 25006047     |
 
 ---
