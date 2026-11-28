@@ -237,6 +237,24 @@ All core algorithmic design, deterministic scoring mathematics, state machine un
 
 ---
 
+### Log Entry #009: Startup Blank Home Screen Bug Fix
+* **Date:** 2026-11-28
+* **Member / Role:** Tan Sze Yung (Role 3: Micro-Learning Lead — Module 2)
+* **AI Tool Used:** Antigravity (Powered by Gemini)
+* **Task Objective:** Fix the initial app-launch blank Home screen bug where `HomeFragment` was not loaded until switching away from and back to the Home tab.
+* **Specific Prompts Inputted:**
+  ```text
+  /plan Fix a startup UI bug where the Home screen content is completely blank on initial app launch, and only renders after tapping another bottom navigation tab (e.g., Learn) and tapping back to Home.
+  ```
+* **AI Output Received:**
+  - `MainActivity.kt`: Diagnosed that `BottomNavigationView` defaults to `R.id.navigation_home` on inflation, causing `selectedItemId = targetTab` to fire `OnItemReselectedListener` instead of `OnItemSelectedListener`; extracted `loadFragmentForTab()`, explicitly loaded the initial tab fragment when `savedInstanceState == null` (syncing `menu.findItem(targetTab)?.isChecked = true`), and added a container-empty fallback in `setOnItemReselectedListener` and `onNewIntent`.
+  - `HomeFragment.kt`: Called `updateDashboardUI()` in `onViewCreated()` (while retaining `onResume()` refresh) so dashboard views and buttons initialize immediately.
+* **Human Verification, Testing & Modification:**
+  - Verified [activity_main.xml](app/src/main/res/layout/activity_main.xml) uses `FragmentContainerView` without a conflicting `android:name` attribute.
+  - Executed `./gradlew assembleDebug` to confirm clean compilation after the fix.
+
+---
+
 *(Team members: please append your sprint log entries below following this standard template after each completed feature)*
 
 ### Log Entry Template (Copy for new entries):
