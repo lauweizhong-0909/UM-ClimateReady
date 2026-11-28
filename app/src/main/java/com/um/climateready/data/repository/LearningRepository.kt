@@ -3,44 +3,41 @@ package com.um.climateready.data.repository
 import android.content.Context
 import com.um.climateready.core.database.AssetDataManager
 import com.um.climateready.core.model.LearningUnit
+import com.um.climateready.core.util.LearningDataHelper
 
 /**
  * Repository for Module 2 — Climate Micro-Learning.
  *
  * Acts as the single source of truth for learning unit data and progress,
- * wrapping [AssetDataManager] to follow the MVVM + Repository pattern.
- *
- * Data is loaded from the pre-compiled JSON asset [m2_microlearning_units.json].
- * Progress (completed unit IDs) is persisted via SharedPreferences inside
- * [AssetDataManager] using the key "completed_unit_ids".
+ * wrapping [AssetDataManager] and delegating pure filtering/completion logic
+ * to [LearningDataHelper] to follow the MVVM + Repository pattern.
  */
 class LearningRepository(context: Context) {
 
     private val dataManager = AssetDataManager.getInstance(context)
 
-    /** Returns all 12 learning units with up-to-date [LearningUnit.isCompleted] state. */
+    /** Returns all loaded learning units with up-to-date [LearningUnit.isCompleted] state. */
     fun getLearningUnits(): List<LearningUnit> = dataManager.learningUnits
+
+    /** Returns total number of loaded units (12 in the standard curriculum). */
+    fun getTotalUnitCount(): Int = dataManager.learningUnits.size
 
     /**
      * Returns units filtered by category.
-     * @param category One of "HEAVY_RAIN", "EXTREME_HEAT", "HAZE_AIR_QUALITY", or null/"ALL"
-     *                 to return all 12 units.
+     * Invalid, null, or blank categories safely resolve to all units.
      */
     fun getFilteredUnits(category: String?): List<LearningUnit> {
-        val all = dataManager.learningUnits
-        return if (category.isNullOrBlank() || category == "ALL") {
-            all
-        } else {
-            all.filter { it.category == category }
-        }
+        return LearningDataHelper.filterUnits(dataManager.learningUnits, category)
+    }
+
+    /** Finds a unit by ID (case-insensitive) for deep-linking or detail display. */
+    fun getUnitById(unitId: String?): LearningUnit? {
+        return LearningDataHelper.resolveUnitById(dataManager.learningUnits, unitId)
     }
 
     /**
      * Toggles the completion state of a learning unit and persists the change
      * to SharedPreferences immediately.
-     *
-     * @param unitId   The unit ID (e.g. "RAIN_01").
-     * @param completed True to mark as completed, false to undo.
      */
     fun toggleCompletion(unitId: String, completed: Boolean) {
         dataManager.setUnitCompleted(unitId, completed)
@@ -55,8 +52,11 @@ class LearningRepository(context: Context) {
      * (requires >= 2 per category AND >= 9 total).
      */
     fun getCompletedCountByCategory(category: String): Int {
-        val completedIds = dataManager.getCompletedUnitIds()
-        return dataManager.learningUnits.count { it.category == category && it.id in completedIds }
+        return LearningDataHelper.getCompletedCountByCategory(
+            units = dataManager.learningUnits,
+            completedIds = dataManager.getCompletedUnitIds(),
+            category = category
+        )
     }
 
     /**
@@ -64,9 +64,9 @@ class LearningRepository(context: Context) {
      * total completed >= 9 AND each category has >= 2 completed units.
      */
     fun isPostTestUnlocked(): Boolean {
-        if (getCompletedCount() < 9) return false
-        return getCompletedCountByCategory("HEAVY_RAIN") >= 2 &&
-               getCompletedCountByCategory("EXTREME_HEAT") >= 2 &&
-               getCompletedCountByCategory("HAZE_AIR_QUALITY") >= 2
+        return LearningDataHelper.isPostTestUnlocked(
+            units = dataManager.learningUnits,
+            completedIds = dataManager.getCompletedUnitIds()
+        )
     }
 }

@@ -211,6 +211,32 @@ All core algorithmic design, deterministic scoring mathematics, state machine un
 
 ---
 
+### Log Entry #008: Week 8 Core Dev Sprint 2 — Module 2 Micro-Learning Polish, Integration & Hardening
+* **Date:** 2026-11-28
+* **Member / Role:** Tan Sze Yung (Role 3: Micro-Learning Lead — Module 2)
+* **AI Tool Used:** Antigravity (Powered by Gemini)
+* **Task Objective:** Harden Module 2 for Week 8: add configuration-change state preservation (`LearningViewModel` + `LessonDetailBottomSheet` saved answer state & Fragment Result sync), wire Assessment-to-Micro-Learning deep-linking (`EXTRA_RECOMMENDED_UNIT_ID`), extract strings and add dark mode (`values-night`) contrast support, add empty/error states, clean PDF artifacts from `m2_microlearning_units.json`, and expand `MicroLearningTest.kt` edge-case unit tests.
+* **Specific Prompts Inputted:**
+  ```text
+  /plan I am the Micro-Learning (M2) Lead for UM-ClimateReady, working on our Week 8 deliverables.
+  [Audit docs/DEVELOPMENT_PLAN_AI_GUIDE.md, README.md, AI_USAGE_LOG.md, feature/learning/, layouts, m2_microlearning_units.json, HomeFragment, AssessmentResultFragment, colors/strings/night themes; create Week 8 plan covering Week 8 requirements, cross-module integration, UI/UX hardening, expanded JUnit edge-case tests, and AI_USAGE_LOG.md update.]
+  Approved. Implement the Week 8 plan, then run ./gradlew testDebugUnitTest and ./gradlew lintDebug to verify there are no test failures or resource/string warnings
+  ```
+* **AI Output Received:**
+  - `core/util/LearningDataHelper.kt`: Pure Kotlin helpers for resilient JSON parsing (corrupt/empty/non-array/partial records), category normalization/filtering, idempotent completion toggles ignoring unknown IDs, post-test unlock evaluation, and unit lookup.
+  - `feature/learning/LearningViewModel.kt`: `SavedStateHandle`-backed ViewModel preserving `selectedCategory` and single-shot deep-link consumption across screen rotation.
+  - Updated `core/database/AssetDataManager.kt` & `data/repository/LearningRepository.kt`: Delegated M2 JSON parsing and completion tracking to `LearningDataHelper`.
+  - Updated `feature/learning/LearningFragment.kt`, `LessonAdapter.kt` (`DiffUtil`), and `LessonDetailBottomSheet.kt`: Added Fragment Result sync, rotation-safe CCNA Knowledge Check answer preservation, double-tap guard, empty/error state handling, and deep-link opening/scrolling.
+  - Updated `MainActivity.kt` and `feature/shell/HomeFragment.kt`: Wired `EXTRA_RECOMMENDED_UNIT_ID` deep-linking into `LearningFragment`, dynamic light/dark system bar icons, and dynamic Home learning progress/CTA strings.
+  - Updated `res/values/colors.xml`, `res/values-night/colors.xml`, `res/values/themes.xml`, `res/values-night/themes.xml`, `res/values/strings.xml`, `res/drawable/bg_unit_number.xml`, `fragment_learning.xml`, `item_lesson_card.xml`, `bottom_sheet_lesson_detail.xml`, and cleaned PDF footer/diagram artifacts in `m2_microlearning_units.json`.
+  - Expanded `test/.../MicroLearningTest.kt` to 18 JUnit tests covering corrupt/empty JSON, duplicate completion toggles, `SavedStateHandle` filter persistence, deep-link consumption, and PDF-artifact cleanliness.
+* **Human Verification, Testing & Modification:**
+  - Inspected light and dark color tokens to ensure WCAG contrast on cards, unit badges, knowledge-check buttons, and Home dashboard CTAs without altering teammates' module logic.
+  - Executed `./gradlew testDebugUnitTest`: verified all unit tests across all modules pass with 0 failures.
+  - Executed `./gradlew lintDebug`: verified zero errors and clean string/resource/dark-theme lint checks.
+
+---
+
 *(Team members: please append your sprint log entries below following this standard template after each completed feature)*
 
 ### Log Entry Template (Copy for new entries):

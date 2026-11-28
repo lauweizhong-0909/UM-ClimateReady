@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:background="@color/card_surface"
         app:elevation="8dp"
-        app:itemIconTint="@color/climate_green_primary"
+        app:itemIconTint="@color/learning_accent_text"
         app:itemTextColor="@color/text_primary"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"

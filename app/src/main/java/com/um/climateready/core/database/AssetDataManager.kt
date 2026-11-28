@@ -8,6 +8,7 @@ import com.um.climateready.core.model.AssessmentQuestion
 import com.um.climateready.core.model.ClimateResource
 import com.um.climateready.core.model.LearningUnit
 import com.um.climateready.core.model.ScenarioQuestion
+import com.um.climateready.core.util.LearningDataHelper
 import java.io.InputStreamReader
 
 class AssetDataManager private constructor(context: Context) {
@@ -21,9 +22,12 @@ class AssetDataManager private constructor(context: Context) {
     }
 
     val learningUnits: List<LearningUnit> by lazy {
-        val list: List<LearningUnit> = loadJsonFromAssets("data/m2_microlearning_units.json", object : TypeToken<List<LearningUnit>>() {}.type)
-        val completedSet = getCompletedUnitIds()
-        list.forEach { it.isCompleted = completedSet.contains(it.id) }
+        val rawJson = readAssetText("data/m2_microlearning_units.json")
+        val list = LearningDataHelper.parseLearningUnitsJson(rawJson)
+        val validCompleted = LearningDataHelper.applyCompletionState(list, getRawCompletedUnitIds())
+        if (validCompleted.size != getRawCompletedUnitIds().size) {
+            prefs.edit().putStringSet("completed_unit_ids", validCompleted).apply()
+        }
         list
     }
 
@@ -48,23 +52,35 @@ class AssetDataManager private constructor(context: Context) {
         }
     }
 
+    private fun readAssetText(fileName: String): String {
+        return try {
+            appContext.assets.open(fileName).bufferedReader().use { it.readText() }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            ""
+        }
+    }
+
+    private fun getRawCompletedUnitIds(): Set<String> {
+        return prefs.getStringSet("completed_unit_ids", emptySet())?.toSet() ?: emptySet()
+    }
+
     fun getCompletedUnitIds(): Set<String> {
-        return prefs.getStringSet("completed_unit_ids", emptySet()) ?: emptySet()
+        return LearningDataHelper.validCompletedIds(learningUnits, getRawCompletedUnitIds())
     }
 
     fun setUnitCompleted(unitId: String, completed: Boolean) {
-        val currentSet = getCompletedUnitIds().toMutableSet()
-        if (completed) {
-            currentSet.add(unitId)
-        } else {
-            currentSet.remove(unitId)
-        }
-        prefs.edit().putStringSet("completed_unit_ids", currentSet).apply()
-        learningUnits.find { it.id == unitId }?.isCompleted = completed
+        val updated = LearningDataHelper.toggleUnitCompletion(
+            units = learningUnits,
+            completedIds = getRawCompletedUnitIds(),
+            unitId = unitId,
+            completed = completed
+        )
+        prefs.edit().putStringSet("completed_unit_ids", updated).apply()
     }
 
     fun getCompletedUnitsCount(): Int {
-        return getCompletedUnitIds().size
+        return LearningDataHelper.getCompletedCount(learningUnits, getRawCompletedUnitIds())
     }
 
     fun savePreAssessmentScore(totalScore: Int, rainScore: Int, heatScore: Int, hazeScore: Int) {

@@ -7,7 +7,7 @@
     "title": "Understanding Heavy Rainfall",
     "summary": "Klang Valley experiences intense equatorial convective downpours, predominantly during late afternoons and seasonal inter-monsoon transitions. Rapid solar heating of moist air induces powerful updrafts, producing high-intensity, short-duration storm bursts exceeding 50 mm/hour. Unlike prolonged temperate drizzle, tropical convective downpours deliver massive volumes of precipitation in brief 30-to-60 minute intervals. Saturated topsoil and high drainage inflow quickly test drainage discharge capacity across urban basins (MET Malaysia, 2024).",
     "realWorldExample": "The severe December 2021 Klang Valley storm generated over 300 mm of localized precipitation in 24 hours, exceeding the historical monthly average.",
-    "umStudentTip": "Track weather forecasts before leaving faculties around 4:00 PM; heavy convective rain in Petaling Jaya usually strikes between 3:30 PM and 6:00 PM. Warm air Tropical Convective Cloud",
+    "umStudentTip": "Track weather forecasts before leaving faculties around 4:00 PM; heavy convective rain in Petaling Jaya usually strikes between 3:30 PM and 6:00 PM.",
     "knowledgeCheck": {
       "question": "Why do tropical downpours overload city gutters much faster than temperate rain?",
       "options": [
@@ -41,7 +41,7 @@
     "title": "Causes and Risks of Flooding",
     "summary": "Flash flooding occurs when the precipitation rate sharply outpaces local storm drainage capacity and soil infiltration. Urban campus infrastructure features extensive impervious surfaces—asphalt roadways, concrete pavements, and parking compounds—which prevent natural rainwater absorption. Surface runoff channels rapidly toward low-lying topography, where converging stormwater backflows over road curbs. Primary hazards include sudden vehicle stalling, displaced metal manhole lids, electrical conduits in submerged grass verges, and fast-flowing hidden open drains (NADMA, 2023).",
     "realWorldExample": "Klang Valley flash floods commonly submerge arterial underpasses within 20 minutes when drainage culverts are choked with urban debris.",
-    "umStudentTip": "Avoid parking vehicles or walking near known low depression zones near PJ Gate and KL Gate during severe rain warnings. Overflow Runoff & Drain Choke",
+    "umStudentTip": "Avoid parking vehicles or walking near known low depression zones near PJ Gate and KL Gate during severe rain warnings.",
     "knowledgeCheck": {
       "question": "What is the primary contributor to rapid surface water accumulation on campus?",
       "options": [
@@ -75,7 +75,7 @@
     "title": "Flood Preparedness",
     "summary": "Preparedness requires interpreting official MET Malaysia color-coded rainfall advisories before setting out across campus. Yellow signals heavy rain expected; Orange indicates persistent, severe downpours exceeding 60 mm within 6 hours; Red indicates critical continuous precipitation over 240 mm in 24 hours. Students should keep portable waterproof pouches for laptops and identification documents, map elevated alternative walking pathways, and avoid parking cars in underground faculty basements when continuous rain alerts are active (MET Malaysia, 2024).",
     "realWorldExample": "Advanced MET warning notifications allow residential colleges to stage sandbags and safely relocate ground-floor equipment before water enters.",
-    "umStudentTip": "If an Orange warning is posted while you are in the central library, secure your electronic equipment in waterproof backpack sleeves before heading to the bus stop. YELLOW • Be Alert ORANGE • Severe (60mm/6h) RED • Danger (>240mm/24h) MET Warning Tiers UM ClimateReady • Module 2 Micro-Learning Curriculum Page 2 of 9",
+    "umStudentTip": "If an Orange warning is posted while you are in the central library, secure your electronic equipment in waterproof backpack sleeves before heading to the bus stop.",
     "knowledgeCheck": {
       "question": "What exact MET Malaysia alert tier signals continuous severe rainfall >60mm in 6 hours?",
       "options": [
@@ -109,7 +109,7 @@
     "title": "What to Do During Flooding",
     "summary": "The cardinal rule during campus waterlogging is straightforward: never walk or drive through moving water. As little as 15 cm (6 inches) of rapid current can knock an adult off balance, while 30 cm (12 inches) can float passenger compact cars. Murky floodwater conceals missing drain gratings, sharp metallic debris, and open inspection manholes. If stranded on foot, seek shelter on upper floors of nearby faculty buildings, avoid touching outdoor lamp posts or fallen electrical cables, and never attempt to wade across flooded campus bus stops (FEMA / Ready.gov, 2022).",
     "realWorldExample": "The global safety guideline \"Turn Around, Don't Drown\" prevents dozens of flash-flood vehicular drowning casualties annually.",
-    "umStudentTip": "If water accumulates along the main road between KK12 and the Examination Building, hold in the lobby until campus security clears the route. 15 cm Can sweep adult away Critical Walking Hazard",
+    "umStudentTip": "If water accumulates along the main road between KK12 and the Examination Building, hold in the lobby until campus security clears the route.",
     "knowledgeCheck": {
       "question": "How deep does moving floodwater need to be to knock over a pedestrian?",
       "options": [
@@ -133,7 +133,7 @@
       "correctOptionId": "A",
       "explanation": "15 cm of flowing water carries sufficient hydrodynamic lateral pressure to destabilize and sweep away an adult."
     },
-    "takeaway": "Just 15 cm of moving floodwater can knock you down; stay sheltered on elevated ground until waters recede. Category 2: Extreme Heat (4 Units) Explains the physiological strain of tropical heat index, early detection of heat illness, and behavioral protection."
+    "takeaway": "Just 15 cm of moving floodwater can knock you down; stay sheltered on elevated ground until waters recede."
   },
   {
     "id": "HEAT_01",
@@ -141,7 +141,7 @@
     "categoryOrder": 5,
     "category": "EXTREME_HEAT",
     "title": "Understanding Global Warming and Heat",
-    "summary": "Humidity >75% Sweat fails Heat Index Dynamics UM ClimateReady • Module 2 Micro-Learning Curriculum Page 3 of 9 Rising global temperatures amplify both the intensity and frequency of localized heat stress. In tropical urban environments like Kuala Lumpur, ambient temperatures of 32–35°C combine with high relative humidity (often exceeding 70– 80%) to generate extreme Heat Index levels. Because the human body relies principally on sweat evaporation for thermoregulation, high ambient moisture prevents sweat from evaporating effectively into the saturated air. As a result, heat is trapped within body tissues, elevating internal core temperature and accelerating cardiac strain (MOH Malaysia, 2023).",
+    "summary": "Rising global temperatures amplify both the intensity and frequency of localized heat stress. In tropical urban environments like Kuala Lumpur, ambient temperatures of 32–35°C combine with high relative humidity (often exceeding 70–80%) to generate extreme Heat Index levels. Because the human body relies principally on sweat evaporation for thermoregulation, high ambient moisture prevents sweat from evaporating effectively into the saturated air. As a result, heat is trapped within body tissues, elevating internal core temperature and accelerating cardiac strain (MOH Malaysia, 2023).",
     "realWorldExample": "An ambient reading of 33°C at 75% relative humidity yields an apparent \"feels like\" heat index above 44°C, placing individuals in the Danger category.",
     "umStudentTip": "Check the apparent heat index, not just temperature numbers, before taking midday walking trips between distant campus faculties.",
     "knowledgeCheck": {
@@ -175,8 +175,8 @@
     "categoryOrder": 6,
     "category": "EXTREME_HEAT",
     "title": "Heat-Related Health Risks",
-    "summary": "Heat-related illnesses progress along a clear physiological spectrum. It begins with mild heat cramps (electrolyte depletion), escalating to heat exhaustion characterized by profuse sweating, pale and clammy skin, nausea, dizziness, and a rapid, weak pulse. Without prompt cooling, condition can deteriorate into Heat Stroke—a medical emergency where thermoregulation completely fails. Core temperature surges above 40°C, sweating abruptly halts, and neurological impairment manifests as confusion, delirium, or loss of consciousness, risking permanent organ injury (WHO, 2023).",
-    "realWorldExample": "Health ministries throughout Southeast Asia issue yellow heat alerts when daily maximums exceed 35°C for three consecutive days to curb hospital admissions. EXHAUSTION • Heavy sweating • Cold, pale skin • Dizziness HEAT STROKE • No sweating • Hot, dry skin • Confusion / Shock Illness Progression UM ClimateReady • Module 2 Micro-Learning Curriculum Page 4 of 9",
+    "summary": "Heat-related illnesses progress along a clear physiological spectrum. It begins with mild heat cramps (electrolyte depletion), escalating to heat exhaustion characterized by profuse sweating, pale and clammy skin, nausea, dizziness, and a rapid, weak pulse. Without prompt cooling, the condition can deteriorate into Heat Stroke—a medical emergency where thermoregulation completely fails. Core temperature surges above 40°C, sweating abruptly halts, and neurological impairment manifests as confusion, delirium, or loss of consciousness, risking permanent organ injury (WHO, 2023).",
+    "realWorldExample": "Health ministries throughout Southeast Asia issue yellow heat alerts when daily maximums exceed 35°C for three consecutive days to curb hospital admissions.",
     "umStudentTip": "If a classmate becomes confused or complains of sudden throbbing headache during outdoor activities, treat it as urgent and contact campus security.",
     "knowledgeCheck": {
       "question": "Which clinical sign clearly separates Heat Stroke from Heat Exhaustion?",
@@ -211,7 +211,7 @@
     "title": "Heat Prevention and Protection",
     "summary": "Preventing heat stress requires disciplined hydration and conscious thermal protection. Drink water proactively throughout the day before feeling thirsty; thirst indicates the body is already experiencing dehydration. Avoid heavy reliance on energy drinks or high-sugar sodas, as excessive caffeine exhibits mild diuretic properties that elevate cardiac load. Wear loose-fitting, breathable, light-colored cotton or technical activewear to reflect direct solar radiation, and carry an umbrella or wide-brimmed hat to reduce radiant skin exposure during campus walks (MOH Malaysia, 2023).",
     "realWorldExample": "Sports medicine guidelines mandate 250 ml fluid intake every 20 minutes during outdoor training under high heat index values.",
-    "umStudentTip": "Refill your reusable water bottle at water dispensers across libraries and faculty lobbies before walking back to your residential college. Hydrate + Shade Proactive Prevention",
+    "umStudentTip": "Refill your reusable water bottle at water dispensers across libraries and faculty lobbies before walking back to your residential college.",
     "knowledgeCheck": {
       "question": "Why are high-caffeine energy drinks contraindicated for rehydration during intense heatwaves?",
       "options": [
@@ -243,7 +243,7 @@
     "categoryOrder": 8,
     "category": "EXTREME_HEAT",
     "title": "Adapting to Hot Weather",
-    "summary": "Canopy: ~30°C Asphalt: >45°C Urban Canopy Cooling UM ClimateReady • Module 2 Micro-Learning Curriculum Page 5 of 9 Urban campus environments trap radiant heat through the Urban Heat Island (UHI) effect, where concrete structures, glass facades, and asphalt roads re-radiate thermal energy long into the evening. Adapting involves route optimization—utilizing sheltered linkways, covered corridors, and mature tree-lined boulevards across campus. International students and freshmen arriving in Malaysia require 10–14 days of gradual physiological acclimatization before undertaking strenuous outdoor activities during peak daylight hours (IPCC AR6 WGII, 2022).",
+    "summary": "Urban campus environments trap radiant heat through the Urban Heat Island (UHI) effect, where concrete structures, glass facades, and asphalt roads re-radiate thermal energy long into the evening. Adapting involves route optimization—utilizing sheltered linkways, covered corridors, and mature tree-lined boulevards across campus. International students and freshmen arriving in Malaysia require 10–14 days of gradual physiological acclimatization before undertaking strenuous outdoor activities during peak daylight hours (IPCC AR6 WGII, 2022).",
     "realWorldExample": "Shaded campus green canopy corridors measure up to 3–5°C cooler in surface radiant temperature compared to open parking lots.",
     "umStudentTip": "Walk through covered faculty corridors and tree-lined perimeter paths around Rimba Ilmu instead of exposed main ring roads.",
     "knowledgeCheck": {
@@ -269,7 +269,7 @@
       "correctOptionId": "B",
       "explanation": "Blood plasma volume expansion and enhanced sweat gland response take approximately 10–14 days of progressive daily exposure."
     },
-    "takeaway": "Route through green shaded paths and covered corridors to avoid high surface temperatures from concrete and asphalt. Category 3: Haze and Air Quality (4 Units) Covers transboundary aerosol composition, official API thresholds, systemic health risks, and certified respiratory protection."
+    "takeaway": "Route through green shaded paths and covered corridors to avoid high surface temperatures from concrete and asphalt."
   },
   {
     "id": "HAZE_01",
@@ -279,7 +279,7 @@
     "title": "Understanding Haze and AQI",
     "summary": "Atmospheric haze in Malaysia is an aggregate mixture of microscopic solid particles and liquid droplets suspended in the troposphere. In Malaysia, air quality is officially quantified via the Air Pollutant Index (API) managed by the Department of Environment's APIMS network. The dominant health hazard during regional haze episodes is Fine Particulate Matter (PM2.5)—aerosols with aerodynamic diameter ≤ 2.5 micrometers, roughly 3% the diameter of human hair. These sub-micron particles remain suspended in ambient air for weeks (DOE Malaysia, 2023).",
     "realWorldExample": "During severe regional dry spells, hundreds of transboundary peatland hotspots generate dense smoke plumes that travel hundreds of kilometers.",
-    "umStudentTip": "Bookmark the official APIMS website (apims.doe.gov.my) to monitor the nearest Petaling Jaya and Cheras ambient monitoring stations. Human Hair (~70 µm) PM10 PM2.5 Microscopic Particle Scale",
+    "umStudentTip": "Bookmark the official APIMS website (apims.doe.gov.my) to monitor the nearest Petaling Jaya and Cheras ambient monitoring stations.",
     "knowledgeCheck": {
       "question": "What microscopic particle diameter defines the primary health threat (PM2.5) during haze?",
       "options": [
@@ -301,7 +301,7 @@
         }
       ],
       "correctOptionId": "C",
-      "explanation": "PM2.5 particles are under 2.5 microns, small enough to bypass upper mucosal cilia and settle deep into the lung alveoli. UM ClimateReady • Module 2 Micro-Learning Curriculum Page 6 of 9"
+      "explanation": "PM2.5 particles are under 2.5 microns, small enough to bypass upper mucosal cilia and settle deep into the lung alveoli."
     },
     "takeaway": "PM2.5 particles are microscopic hazards capable of lingering in the atmosphere and penetrating deep respiratory pathways."
   },
@@ -313,7 +313,7 @@
     "title": "Causes and Effects of Haze",
     "summary": "Regional haze occurrences correlate with agricultural land clearing, dry forest fires, and underground peat combustion during the Southwest Monsoon (June to September). Prevailing south-westerly winds transport combustion plumes across maritime straits into Peninsular Malaysia. The API scale categorizes risk: 0–50 Good, 51–100 Moderate, 101–200 Unhealthy, 201–300 Very Unhealthy, and >300 Hazardous. When the API crosses 100, sensitive individuals begin experiencing eye irritation and throat inflammation; above 200, outdoor physical classes are suspended (DOE Malaysia, 2023).",
     "realWorldExample": "In September 2019, hundreds of schools across Selangor and Kuala Lumpur closed when regional API levels exceeded 200.",
-    "umStudentTip": "When API readings rise above 100, move team discussions and club activities inside air-conditioned faculty spaces or library study rooms. 0-50 51-100 101-200 201-300 >300 Malaysia API Tiers Official APIMS Index Scale",
+    "umStudentTip": "When API readings rise above 100, move team discussions and club activities inside air-conditioned faculty spaces or library study rooms.",
     "knowledgeCheck": {
       "question": "Under the Department of Environment API classification, what tier is 101–200?",
       "options": [
@@ -345,7 +345,7 @@
     "categoryOrder": 11,
     "category": "HAZE_AIR_QUALITY",
     "title": "Health Risks of Air Pollution",
-    "summary": "Because PM2.5 particles are small enough to bypass mucosal defenses in the upper respiratory tract, they penetrate deep into lung alveoli and diffuse into systemic circulation. This process triggers chronic vascular inflammation, raises blood pressure, accelerates atheroma plaque instability, and significantly elevates short- term risks of myocardial infarction and acute asthma attacks. Students with respiratory allergies, asthma, or cardiac histories represent vulnerable cohorts and should monitor respiratory peak flow and keep prescribed inhalers readily available (WHO, 2021). Deep Alveolar Ingress Cardiovascular Pathway UM ClimateReady • Module 2 Micro-Learning Curriculum Page 7 of 9",
+    "summary": "Because PM2.5 particles are small enough to bypass mucosal defenses in the upper respiratory tract, they penetrate deep into lung alveoli and diffuse into systemic circulation. This process triggers chronic vascular inflammation, raises blood pressure, accelerates atheroma plaque instability, and significantly elevates short-term risks of myocardial infarction and acute asthma attacks. Students with respiratory allergies, asthma, or cardiac histories represent vulnerable cohorts and should monitor respiratory peak flow and keep prescribed inhalers readily available (WHO, 2021).",
     "realWorldExample": "Clinical studies demonstrate immediate surges in acute emergency asthma nebulization visits across Klang Valley clinics during transboundary smoke events.",
     "umStudentTip": "Keep inhalers on hand and consult University Health Clinic (PKU UM) promptly if experiencing persistent chest tightness or wheezing during haze days.",
     "knowledgeCheck": {
@@ -379,9 +379,9 @@
     "categoryOrder": 12,
     "category": "HAZE_AIR_QUALITY",
     "title": "Protection During Haze",
-    "summary": "Standard 3-ply surgical masks and cloth coverings are designed to contain large expelled droplets; their loose facial seal allows microscopic PM2.5 particles to enter through lateral gaps. When API levels exceed 100, individuals should wear tightly sealed particulate respirators (such as N95, KN95, or KF94 standards) that utilize electrostatic microfibers to capture sub-micron particles. Indoors, ensure windows and doors remain tightly closed, run air conditioning in recirculation mode, and utilize HEPA purifiers to reduce indoor particle accumulation (MOH Malaysia, 2023). Protective Equipment PM2.5 Filtration Facial Perimeter Seal Haze Suitability Cloth / Bandana <15% None (High bypass) Ineffective 3-Ply Surgical Mask 30%–45% Loose (Side leakage) Marginal (Fluid barrier only) N95 / KF94 / KN95 ≥94%–95% Airtight electrostatic seal Recommended Standard",
+    "summary": "Standard 3-ply surgical masks and cloth coverings are designed to contain large expelled droplets; their loose facial seal allows microscopic PM2.5 particles to enter through lateral gaps. When API levels exceed 100, individuals should wear tightly sealed particulate respirators (such as N95, KN95, or KF94 standards) that utilize electrostatic microfibers to capture sub-micron particles. Indoors, ensure windows and doors remain tightly closed, run air conditioning in recirculation mode, and utilize HEPA purifiers to reduce indoor particle accumulation (MOH Malaysia, 2023).",
     "realWorldExample": "Certified particulate respirators deliver >95% filtration efficiency against 0.3-micron aerosols when fitted properly against the face.",
-    "umStudentTip": "Keep residential dorm windows shut during severe haze spells and wear a sealed N95/KF94 mask when walking between colleges and lecture halls. Surgical Gaps Leak N95 / KF94 Sealed Fit 95% PM2.5 Filter Respiratory Mask Standard",
+    "umStudentTip": "Keep residential dorm windows shut during severe haze spells and wear a sealed N95/KF94 mask when walking between colleges and lecture halls.",
     "knowledgeCheck": {
       "question": "Why are standard 3-ply surgical masks insufficient against severe PM2.5 haze?",
       "options": [

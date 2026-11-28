@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- UM Brand & Climate Colors (Dark Mode) -->
+    <color name="um_navy">#0D3452</color>
+    <color name="um_gold">#FDB913</color>
+    <color name="climate_green_primary">#2E7D32</color>
+    <color name="climate_green_light">#66BB6A</color>
+    <color name="climate_green_dark">#A5D6A7</color>
+    <color name="climate_green_container">#1B3B20</color>
+
+    <!-- Status & Scoring Bands (Dark Mode High-Contrast) -->
+    <color name="score_red">#EF9A9A</color>
+    <color name="score_red_container">#4A1C1C</color>
+    <color name="score_yellow">#FFD54F</color>
+    <color name="score_yellow_container">#3E3008</color>
+    <color name="score_green">#81C784</color>
+    <color name="score_green_container">#1B3B20</color>
+
+    <!-- Neutrals & Backgrounds (Dark Mode) -->
+    <color name="bg_light">#121413</color>
+    <color name="card_surface">#1D211F</color>
+    <color name="text_primary">#ECEEEB</color>
+    <color name="text_secondary">#C1C7C2</color>
+    <color name="text_tertiary">#969E98</color>
+    <color name="divider_line">#333A36</color>
+    <color name="teal_stat">#4DB6AC</color>
+
+    <!-- Module 2 Micro-Learning Semantic Tokens (Dark Mode) -->
+    <color name="learning_accent_text">#81C784</color>
+    <color name="learning_unit_badge_bg">#2E7D32</color>
+    <color name="learning_example_bg">#2C2412</color>
+    <color name="learning_example_title">#FFD54F</color>
+    <color name="learning_example_body">#F5E6C4</color>
+    <color name="learning_tip_bg">#17301C</color>
+    <color name="learning_tip_title">#A5D6A7</color>
+    <color name="learning_tip_body">#D7EED9</color>
+    <color name="learning_tip_stroke">#4C8C4A</color>
+    <color name="learning_kc_accent">#90CAF9</color>
+    <color name="learning_explanation_bg">#14293D</color>
+    <color name="learning_explanation_text">#BBDEFB</color>
+    <color name="learning_answer_correct_bg">#2E7D32</color>
+    <color name="learning_answer_wrong_bg">#C62828</color>
+    <color name="learning_complete_bg">#2E7D32</color>
+    <color name="learning_incomplete_bg">#1B5E20</color>
+</resources>
