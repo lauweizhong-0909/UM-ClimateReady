@@ -1,8 +1,9 @@
 package com.um.climateready
 
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import androidx.lifecycle.SavedStateHandle
 import com.um.climateready.core.model.LearningUnit
+import com.um.climateready.core.util.LearningDataHelper
+import com.um.climateready.feature.learning.LearningViewModel
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -11,24 +12,16 @@ import java.io.File
 /**
  * JUnit unit tests for Module 2 — Climate Micro-Learning.
  *
- * Tests are split into two groups:
- *
- * GROUP A — JSON Parsing Tests (7 tests)
- *   Verifies that [m2_microlearning_units.json] is well-formed and matches
- *   the curriculum specification (12 units, 3 categories × 4, correct option IDs,
- *   required text fields, global order uniqueness, naming convention).
- *
- * GROUP B — Progress Tracking Tests (6 tests)
- *   Exercises the in-memory completion toggle logic used by [LearningRepository]
- *   and [AssetDataManager.setUnitCompleted], using a mutable copy of the unit list
- *   without any Android Context or SharedPreferences dependency.
+ * Covers:
+ * - GROUP A: Seed JSON schema, curriculum completeness, and PDF-artifact cleanliness
+ * - GROUP B: Progress tracking, duplicate toggle idempotency, and post-test unlock boundaries
+ * - GROUP C: Corrupt/empty JSON handling, filter state persistence, and deep-link resolution
  *
  * Run individually:
  *   ./gradlew testDebugUnitTest --tests "*MicroLearningTest*"
  */
 class MicroLearningTest {
 
-    private val gson = Gson()
     private val assetsDir = File("src/main/assets/data")
     private val jsonFile = File(assetsDir, "m2_microlearning_units.json")
 
@@ -37,21 +30,18 @@ class MicroLearningTest {
     @Before
     fun setUp() {
         assertTrue("m2_microlearning_units.json must exist in assets/data/", jsonFile.exists())
-        val type = object : TypeToken<List<LearningUnit>>() {}.type
-        units = gson.fromJson(jsonFile.readText(), type)
+        units = LearningDataHelper.parseLearningUnitsJson(jsonFile.readText())
     }
 
     // =========================================================================
-    // GROUP A — JSON Parsing Tests
+    // GROUP A — JSON Parsing & Curriculum Integrity Tests
     // =========================================================================
 
-    /** The JSON must deserialize into exactly 12 LearningUnit records. */
     @Test
     fun jsonLoadsExactly12Units() {
         assertEquals("Must load exactly 12 micro-learning units", 12, units.size)
     }
 
-    /** Every unit must have non-blank values for all required text fields. */
     @Test
     fun allUnitsHaveNonBlankRequiredFields() {
         units.forEach { unit ->
@@ -64,7 +54,28 @@ class MicroLearningTest {
         }
     }
 
-    /** Each unit's Knowledge Check must have exactly 4 answer options. */
+    @Test
+    fun seedCurriculumContainsNoPdfPageFooterArtifacts() {
+        val rawText = jsonFile.readText()
+        assertFalse(
+            "Seed JSON should not contain leftover PDF footer markers",
+            rawText.contains("Module 2 Micro-Learning Curriculum")
+        )
+        units.forEach { unit ->
+            val fields = listOf(
+                unit.title,
+                unit.summary,
+                unit.realWorldExample,
+                unit.umStudentTip,
+                unit.takeaway,
+                unit.knowledgeCheck?.explanation.orEmpty()
+            )
+            fields.forEach { text ->
+                assertFalse("Field in ${unit.id} must not contain 'Page ' footer", Regex("""Page \d+ of \d+""").containsMatchIn(text))
+            }
+        }
+    }
+
     @Test
     fun allUnitsHaveExactly4KnowledgeCheckOptions() {
         units.forEach { unit ->
@@ -78,7 +89,6 @@ class MicroLearningTest {
         }
     }
 
-    /** The correctOptionId in every Knowledge Check must match one of the 4 option IDs. */
     @Test
     fun correctOptionIdExistsInOptionsList() {
         units.forEach { unit ->
@@ -91,45 +101,32 @@ class MicroLearningTest {
         }
     }
 
-    /** Category distribution must be exactly 4 HEAVY_RAIN, 4 EXTREME_HEAT, 4 HAZE_AIR_QUALITY. */
     @Test
     fun categoryDistributionIsExactly4PerCategory() {
-        val rainCount = units.count { it.category == "HEAVY_RAIN" }
-        val heatCount = units.count { it.category == "EXTREME_HEAT" }
-        val hazeCount = units.count { it.category == "HAZE_AIR_QUALITY" }
+        val rainCount = units.count { it.category == LearningDataHelper.CATEGORY_HEAVY_RAIN }
+        val heatCount = units.count { it.category == LearningDataHelper.CATEGORY_EXTREME_HEAT }
+        val hazeCount = units.count { it.category == LearningDataHelper.CATEGORY_HAZE }
 
-        assertEquals("Must have exactly 4 HEAVY_RAIN units",      4, rainCount)
-        assertEquals("Must have exactly 4 EXTREME_HEAT units",    4, heatCount)
+        assertEquals("Must have exactly 4 HEAVY_RAIN units", 4, rainCount)
+        assertEquals("Must have exactly 4 EXTREME_HEAT units", 4, heatCount)
         assertEquals("Must have exactly 4 HAZE_AIR_QUALITY units", 4, hazeCount)
     }
 
-    /** globalOrder values must be unique and span 1 to 12 without gaps. */
     @Test
     fun globalOrderValuesAreUnique1Through12() {
         val orders = units.map { it.globalOrder }.sorted()
-        val expected = (1..12).toList()
-        assertEquals(
-            "globalOrder values must be exactly 1 through 12 with no duplicates or gaps",
-            expected,
-            orders
-        )
+        assertEquals((1..12).toList(), orders)
     }
 
-    /**
-     * Unit IDs must follow the naming convention:
-     * RAIN_01..RAIN_04, HEAT_01..HEAT_04, HAZE_01..HAZE_04.
-     */
     @Test
     fun unitIdsFollowNamingConvention() {
         val validPrefixes = listOf("RAIN_", "HEAT_", "HAZE_")
         units.forEach { unit ->
-            val hasValidPrefix = validPrefixes.any { unit.id.startsWith(it) }
             assertTrue(
                 "Unit ID '${unit.id}' does not follow RAIN_xx / HEAT_xx / HAZE_xx convention",
-                hasValidPrefix
+                validPrefixes.any { unit.id.startsWith(it) }
             )
         }
-        // Spot-check the specific IDs defined in the curriculum doc
         val ids = units.map { it.id }.toSet()
         listOf("RAIN_01", "RAIN_04", "HEAT_01", "HEAT_04", "HAZE_01", "HAZE_04").forEach { expected ->
             assertTrue("Expected unit ID '$expected' not found in JSON", expected in ids)
@@ -137,122 +134,188 @@ class MicroLearningTest {
     }
 
     // =========================================================================
-    // GROUP B — Progress Tracking Tests (pure in-memory, no Android Context)
+    // GROUP B — Progress Tracking & Duplicate Toggle Tests
     // =========================================================================
 
-    /**
-     * Helper: returns a fresh mutable copy of units with isCompleted reset to false.
-     * Simulates a first-launch state where no units have been completed.
-     */
     private fun freshUnits(): MutableList<LearningUnit> =
         units.map { it.copy(isCompleted = false) }.toMutableList()
 
-    /** After toggling none, filtered with "ALL" must return all 12 units. */
     @Test
     fun filteredUnitsReturnsAll12WhenCategoryIsAll() {
         val all = freshUnits()
-        val filtered = all.filter { true }  // "ALL" = no filter
-        assertEquals(12, filtered.size)
+        assertEquals(12, LearningDataHelper.filterUnits(all, LearningDataHelper.CATEGORY_ALL).size)
+        assertEquals(12, LearningDataHelper.filterUnits(all, null).size)
+        assertEquals(12, LearningDataHelper.filterUnits(all, "   ").size)
+        assertEquals(12, LearningDataHelper.filterUnits(all, "UNKNOWN_CATEGORY").size)
     }
 
-    /** Filtering by HEAVY_RAIN must return exactly 4 units. */
     @Test
     fun filteredUnitsReturnsOnly4HeavyRainUnits() {
-        val rainOnly = freshUnits().filter { it.category == "HEAVY_RAIN" }
+        val rainOnly = LearningDataHelper.filterUnits(freshUnits(), LearningDataHelper.CATEGORY_HEAVY_RAIN)
         assertEquals(4, rainOnly.size)
-        rainOnly.forEach { unit ->
-            assertEquals("HEAVY_RAIN", unit.category)
-        }
+        rainOnly.forEach { assertEquals(LearningDataHelper.CATEGORY_HEAVY_RAIN, it.category) }
     }
 
-    /** Fresh unit list (no SharedPreferences) should have 0 completed units. */
     @Test
     fun completedCountStartsAtZeroForFreshList() {
         val all = freshUnits()
-        val completedCount = all.count { it.isCompleted }
-        assertEquals(0, completedCount)
+        assertEquals(0, LearningDataHelper.getCompletedCount(all, emptySet()))
     }
 
-    /** Marking 3 specific units complete must increment completed count to 3. */
     @Test
     fun completedCountIncrementsCorrectlyAfterMarkingComplete() {
         val all = freshUnits()
-        val idsToComplete = listOf("RAIN_01", "HEAT_01", "HAZE_01")
-
-        // Simulate what AssetDataManager.setUnitCompleted does to in-memory list
-        idsToComplete.forEach { id ->
-            all.find { it.id == id }?.isCompleted = true
+        var completed = emptySet<String>()
+        listOf("RAIN_01", "HEAT_01", "HAZE_01").forEach { id ->
+            completed = LearningDataHelper.toggleUnitCompletion(all, completed, id, true)
         }
-
-        val completedCount = all.count { it.isCompleted }
-        assertEquals(
-            "Completing 3 units must result in completedCount == 3",
-            3,
-            completedCount
-        )
+        assertEquals(3, LearningDataHelper.getCompletedCount(all, completed))
+        assertEquals(3, all.count { it.isCompleted })
     }
 
-    /** Marking the same unit complete twice must NOT double-count it. */
     @Test
-    fun markingUnitCompleteIsIdempotent() {
+    fun duplicateCompletionTogglesAreIdempotentAndIgnoreUnknownIds() {
         val all = freshUnits()
-        val unit = all.first { it.id == "RAIN_01" }
+        var completed = setOf("UNKNOWN_99", "")
 
-        // Mark complete twice
-        unit.isCompleted = true
-        unit.isCompleted = true
+        // Unknown/blank IDs must be ignored
+        assertEquals(0, LearningDataHelper.getCompletedCount(all, completed))
 
-        val completedCount = all.count { it.isCompleted }
-        assertEquals(
-            "Double-marking a unit complete must still count as 1 completed",
-            1,
-            completedCount
-        )
+        // Duplicate mark-complete on RAIN_01 must count as 1
+        completed = LearningDataHelper.toggleUnitCompletion(all, completed, "RAIN_01", true)
+        completed = LearningDataHelper.toggleUnitCompletion(all, completed, "RAIN_01", true)
+        assertEquals(1, LearningDataHelper.getCompletedCount(all, completed))
+        assertTrue(all.first { it.id == "RAIN_01" }.isCompleted)
+
+        // Toggle off -> off again (duplicate false) -> back on
+        completed = LearningDataHelper.toggleUnitCompletion(all, completed, "RAIN_01", false)
+        completed = LearningDataHelper.toggleUnitCompletion(all, completed, "RAIN_01", false)
+        assertEquals(0, LearningDataHelper.getCompletedCount(all, completed))
+        assertFalse(all.first { it.id == "RAIN_01" }.isCompleted)
+
+        completed = LearningDataHelper.toggleUnitCompletion(all, completed, "RAIN_01", true)
+        assertEquals(1, LearningDataHelper.getCompletedCount(all, completed))
+        assertTrue(all.first { it.id == "RAIN_01" }.isCompleted)
+
+        // Attempting to toggle non-existent ID must not alter completed set
+        completed = LearningDataHelper.toggleUnitCompletion(all, completed, "NON_EXISTENT", true)
+        assertEquals(setOf("RAIN_01"), completed)
     }
 
-    /** Undoing completion must set isCompleted back to false. */
-    @Test
-    fun undoCompletionRestoresIsCompletedToFalse() {
-        val all = freshUnits()
-        val unit = all.first { it.id == "HAZE_02" }
-
-        unit.isCompleted = true
-        assertEquals(true, unit.isCompleted)
-
-        unit.isCompleted = false    // undo
-        assertEquals(false, unit.isCompleted)
-        assertEquals(0, all.count { it.isCompleted })
-    }
-
-    /**
-     * Post-test unlock rule: requires >= 9 total AND >= 2 per category.
-     * Tests the boundary — 8 total must NOT unlock; 9 total with >= 2 each MUST unlock.
-     */
     @Test
     fun postTestUnlockRequires9TotalAnd2PerCategory() {
-        // Helper mirrors LearningRepository.isPostTestUnlocked logic
-        fun isUnlocked(all: List<LearningUnit>): Boolean {
-            val completed = all.filter { it.isCompleted }
-            if (completed.size < 9) return false
-            val rain = completed.count { it.category == "HEAVY_RAIN" }
-            val heat = completed.count { it.category == "EXTREME_HEAT" }
-            val haze = completed.count { it.category == "HAZE_AIR_QUALITY" }
-            return rain >= 2 && heat >= 2 && haze >= 2
-        }
-
         val all = freshUnits()
+        var completed = setOf(
+            "RAIN_01", "RAIN_02", "RAIN_03", "RAIN_04",
+            "HEAT_01", "HEAT_02",
+            "HAZE_01", "HAZE_02"
+        )
+        // 8 total (4 RAIN, 2 HEAT, 2 HAZE) -> locked
+        assertFalse("8 completed must NOT unlock post-test", LearningDataHelper.isPostTestUnlocked(all, completed))
 
-        // Case 1: 8 total — must NOT unlock (even if distribution is fine)
-        all.filter { it.category == "HEAVY_RAIN" }.take(2).forEach { it.isCompleted = true }
-        all.filter { it.category == "EXTREME_HEAT" }.take(2).forEach { it.isCompleted = true }
-        all.filter { it.category == "HAZE_AIR_QUALITY" }.take(2).forEach { it.isCompleted = true }
-        // 6 so far — add 2 more from RAIN
-        all.filter { it.category == "HEAVY_RAIN" && !it.isCompleted }.take(2).forEach { it.isCompleted = true }
-        // Now 8 total (4 RAIN, 2 HEAT, 2 HAZE)
-        assertEquals("8 completed must NOT unlock post-test", false, isUnlocked(all))
+        // 9 total (4 RAIN, 3 HEAT, 2 HAZE) -> unlocked
+        completed = LearningDataHelper.toggleUnitCompletion(all, completed, "HEAT_03", true)
+        assertTrue("9 completed with >=2 per category MUST unlock post-test", LearningDataHelper.isPostTestUnlocked(all, completed))
 
-        // Case 2: add 1 more from HEAT to reach 9 total (4 RAIN, 3 HEAT, 2 HAZE)
-        all.filter { it.category == "EXTREME_HEAT" && !it.isCompleted }.take(1).forEach { it.isCompleted = true }
-        assertEquals("9 completed with >=2 per category MUST unlock post-test", true, isUnlocked(all))
+        // 9 total with only 1 HAZE (4 RAIN, 4 HEAT, 1 HAZE) -> locked
+        val imbalanced = setOf(
+            "RAIN_01", "RAIN_02", "RAIN_03", "RAIN_04",
+            "HEAT_01", "HEAT_02", "HEAT_03", "HEAT_04",
+            "HAZE_01"
+        )
+        assertFalse("9 completed with <2 in HAZE must NOT unlock post-test", LearningDataHelper.isPostTestUnlocked(all, imbalanced))
+    }
+
+    // =========================================================================
+    // GROUP C — Corrupt/Empty JSON, Filter State Persistence & Deep-Link Tests
+    // =========================================================================
+
+    @Test
+    fun parseLearningUnitsHandlesEmptyAndCorruptJsonSafely() {
+        assertTrue(LearningDataHelper.parseLearningUnitsJson(null).isEmpty())
+        assertTrue(LearningDataHelper.parseLearningUnitsJson("").isEmpty())
+        assertTrue(LearningDataHelper.parseLearningUnitsJson("   \n\t  ").isEmpty())
+        assertTrue(LearningDataHelper.parseLearningUnitsJson("null").isEmpty())
+        assertTrue(LearningDataHelper.parseLearningUnitsJson("[]").isEmpty())
+        assertTrue(LearningDataHelper.parseLearningUnitsJson("{}").isEmpty())
+        assertTrue(LearningDataHelper.parseLearningUnitsJson("{malformed json [").isEmpty())
+    }
+
+    @Test
+    fun parseLearningUnitsDropsIncompleteRecordsWhileKeepingValidOnes() {
+        val mixedJson = """
+            [
+              {
+                "id": "",
+                "globalOrder": 1,
+                "categoryOrder": 1,
+                "category": "HEAVY_RAIN",
+                "title": "Missing ID"
+              },
+              {
+                "id": "BAD_CAT",
+                "globalOrder": 2,
+                "categoryOrder": 1,
+                "category": "EARTHQUAKE",
+                "title": "Invalid Category"
+              },
+              {
+                "id": "RAIN_01",
+                "globalOrder": 1,
+                "categoryOrder": 1,
+                "category": "HEAVY_RAIN",
+                "title": "Understanding Heavy Rainfall",
+                "summary": "Valid summary",
+                "realWorldExample": "Valid example",
+                "umStudentTip": "Valid tip",
+                "takeaway": "Valid takeaway"
+              }
+            ]
+        """.trimIndent()
+
+        val parsed = LearningDataHelper.parseLearningUnitsJson(mixedJson)
+        assertEquals(1, parsed.size)
+        assertEquals("RAIN_01", parsed.first().id)
+        assertNull(parsed.first().knowledgeCheck)
+    }
+
+    @Test
+    fun learningViewModelPersistsFilterStateAcrossRecreation() {
+        val handle = SavedStateHandle()
+        val vmBeforeRotation = LearningViewModel(handle)
+
+        assertEquals(LearningDataHelper.CATEGORY_ALL, vmBeforeRotation.selectedCategory)
+
+        vmBeforeRotation.setSelectedCategory(LearningDataHelper.CATEGORY_EXTREME_HEAT)
+        assertEquals(LearningDataHelper.CATEGORY_EXTREME_HEAT, vmBeforeRotation.selectedCategory)
+
+        // Simulate recreation with the same SavedStateHandle state
+        val vmAfterRotation = LearningViewModel(handle)
+        assertEquals(LearningDataHelper.CATEGORY_EXTREME_HEAT, vmAfterRotation.selectedCategory)
+
+        // Invalid category normalizes cleanly back to ALL
+        vmAfterRotation.setSelectedCategory("INVALID")
+        assertEquals(LearningDataHelper.CATEGORY_ALL, vmAfterRotation.selectedCategory)
+    }
+
+    @Test
+    fun learningViewModelConsumesDeepLinkOnlyOnceAndResolvesValidUnits() {
+        val handle = SavedStateHandle()
+        val viewModel = LearningViewModel(handle)
+
+        // First consumption succeeds; second (e.g. after rotation) returns null
+        assertEquals("HEAT_02", viewModel.consumeDeepLinkUnitId("HEAT_02"))
+        assertNull(viewModel.consumeDeepLinkUnitId("HEAT_02"))
+
+        // Explicit reset allows a subsequent deep-link from onNewIntent
+        viewModel.resetDeepLinkHistory()
+        assertEquals("HAZE_01", viewModel.consumeDeepLinkUnitId("HAZE_01"))
+
+        // Unit resolution helper handles trimming/casing and missing IDs safely
+        val resolved = LearningDataHelper.resolveUnitById(units, " rain_03 ")
+        assertNotNull(resolved)
+        assertEquals("RAIN_03", resolved?.id)
+        assertNull(LearningDataHelper.resolveUnitById(units, "DOES_NOT_EXIST"))
+        assertNull(LearningDataHelper.resolveUnitById(units, ""))
     }
 }

@@ -5,36 +5,45 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.um.climateready.R
 import com.um.climateready.core.model.LearningUnit
+import com.um.climateready.core.util.LearningDataHelper
 import com.um.climateready.data.repository.LearningRepository
 import com.um.climateready.databinding.FragmentLearningBinding
 
 /**
  * Module 2 — Climate Micro-Learning fragment.
  *
- * Displays a progress header and a category-filtered list of 12 learning unit cards.
- * Tapping a card opens [LessonDetailBottomSheet] which shows the full lesson content,
- * CCNA-style knowledge check, and "Mark as Completed" toggle.
- *
- * Progress is persisted via SharedPreferences in [AssetDataManager] and reflected
- * immediately on the [LinearProgressIndicator] and unit card checkmarks.
+ * Displays a progress header, category filter chips (persisted across rotation
+ * via [LearningViewModel]), a list of 12 learning unit cards, empty/error states,
+ * and deep-linking from Module 1 Assessment recommendations into [LessonDetailBottomSheet].
  */
 class LearningFragment : Fragment() {
 
     private var _binding: FragmentLearningBinding? = null
     private val binding get() = _binding!!
 
+    private val viewModel: LearningViewModel by viewModels()
     private lateinit var repository: LearningRepository
     private lateinit var lessonAdapter: LessonAdapter
+    private var suppressChipListener = false
 
-    /** Currently selected category filter. "ALL" = show all 12 units. */
-    private var selectedCategory: String = "ALL"
+    companion object {
+        const val ARG_RECOMMENDED_UNIT_ID = "arg_recommended_unit_id"
+        private const val TAG_LESSON_DETAIL = "lesson_detail"
 
-    // ---------------------------------------------------------------------------
-    // Lifecycle
-    // ---------------------------------------------------------------------------
+        fun newInstance(recommendedUnitId: String? = null): LearningFragment {
+            return LearningFragment().apply {
+                if (!recommendedUnitId.isNullOrBlank()) {
+                    arguments = Bundle().apply {
+                        putString(ARG_RECOMMENDED_UNIT_ID, recommendedUnitId)
+                    }
+                }
+            }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,28 +61,28 @@ class LearningFragment : Fragment() {
 
         setupRecyclerView()
         setupChipFilter()
-        applyFilter()           // initial load — shows all 12 units
-        updateProgressHeader()
+        setupEmptyStateAction()
+        setupFragmentResultListener()
+
+        syncChipWithCategory(viewModel.selectedCategory)
+        refreshLearningUi()
+
+        val deepLinkUnitId = arguments?.getString(ARG_RECOMMENDED_UNIT_ID)
+        if (!deepLinkUnitId.isNullOrBlank()) {
+            openRecommendedUnit(deepLinkUnitId)
+            arguments?.remove(ARG_RECOMMENDED_UNIT_ID)
+        }
     }
 
-    /**
-     * Refresh list and progress on return from back stack or when the
-     * bottom sheet is dismissed (completion state may have changed).
-     */
     override fun onResume() {
         super.onResume()
-        applyFilter()
-        updateProgressHeader()
+        refreshLearningUi()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
-    // ---------------------------------------------------------------------------
-    // Setup
-    // ---------------------------------------------------------------------------
 
     private fun setupRecyclerView() {
         lessonAdapter = LessonAdapter(emptyList()) { unit ->
@@ -88,53 +97,111 @@ class LearningFragment : Fragment() {
 
     private fun setupChipFilter() {
         binding.chipGroupCategories.setOnCheckedStateChangeListener { _, checkedIds ->
-            selectedCategory = when (checkedIds.firstOrNull()) {
-                R.id.chip_rain -> "HEAVY_RAIN"
-                R.id.chip_heat -> "EXTREME_HEAT"
-                R.id.chip_haze -> "HAZE_AIR_QUALITY"
-                else           -> "ALL"
+            if (suppressChipListener) return@setOnCheckedStateChangeListener
+            val category = when (checkedIds.firstOrNull()) {
+                R.id.chip_rain -> LearningDataHelper.CATEGORY_HEAVY_RAIN
+                R.id.chip_heat -> LearningDataHelper.CATEGORY_EXTREME_HEAT
+                R.id.chip_haze -> LearningDataHelper.CATEGORY_HAZE
+                else -> LearningDataHelper.CATEGORY_ALL
             }
+            viewModel.setSelectedCategory(category)
             applyFilter()
         }
     }
 
-    // ---------------------------------------------------------------------------
-    // Data & UI update helpers
-    // ---------------------------------------------------------------------------
-
-    /** Applies the current category filter and refreshes the RecyclerView. */
-    private fun applyFilter() {
-        val filtered = repository.getFilteredUnits(selectedCategory)
-        lessonAdapter.updateData(filtered)
+    private fun setupEmptyStateAction() {
+        binding.btnResetFilter.setOnClickListener {
+            viewModel.setSelectedCategory(LearningDataHelper.CATEGORY_ALL)
+            syncChipWithCategory(LearningDataHelper.CATEGORY_ALL)
+            applyFilter()
+        }
     }
 
-    /**
-     * Updates the progress bar and counter label above the chip filter.
-     * Shows "X / 12 completed" with the ProgressBar filled proportionally.
-     */
+    private fun setupFragmentResultListener() {
+        childFragmentManager.setFragmentResultListener(
+            LessonDetailBottomSheet.REQUEST_KEY_LESSON_UPDATED,
+            viewLifecycleOwner
+        ) { _, _ ->
+            refreshLearningUi()
+        }
+    }
+
+    private fun syncChipWithCategory(category: String) {
+        val targetChipId = when (LearningDataHelper.normalizeCategory(category)) {
+            LearningDataHelper.CATEGORY_HEAVY_RAIN -> R.id.chip_rain
+            LearningDataHelper.CATEGORY_EXTREME_HEAT -> R.id.chip_heat
+            LearningDataHelper.CATEGORY_HAZE -> R.id.chip_haze
+            else -> R.id.chip_all
+        }
+        if (binding.chipGroupCategories.checkedChipId != targetChipId) {
+            suppressChipListener = true
+            binding.chipGroupCategories.check(targetChipId)
+            suppressChipListener = false
+        }
+    }
+
+    private fun refreshLearningUi() {
+        if (_binding == null) return
+        applyFilter()
+        updateProgressHeader()
+    }
+
+    private fun applyFilter() {
+        val filtered = repository.getFilteredUnits(viewModel.selectedCategory)
+        lessonAdapter.updateData(filtered)
+
+        if (filtered.isEmpty()) {
+            binding.rvLearningUnits.visibility = View.GONE
+            binding.layoutLearningEmpty.visibility = View.VISIBLE
+            val hasAnyData = repository.getTotalUnitCount() > 0
+            binding.tvLearningEmptyDesc.text = getString(
+                if (hasAnyData) R.string.learning_empty_filter_desc else R.string.learning_empty_data_desc
+            )
+            binding.btnResetFilter.visibility = if (hasAnyData) View.VISIBLE else View.GONE
+        } else {
+            binding.rvLearningUnits.visibility = View.VISIBLE
+            binding.layoutLearningEmpty.visibility = View.GONE
+        }
+    }
+
     private fun updateProgressHeader() {
         val completedCount = repository.getCompletedCount()
-        val totalCount = 12
-        binding.progressBarLearning.progress = completedCount
-        binding.tvProgressCount.text = "$completedCount / $totalCount completed"
+        val totalCount = repository.getTotalUnitCount().let { if (it > 0) it else 12 }
+        binding.progressBarLearning.max = totalCount
+        binding.progressBarLearning.progress = completedCount.coerceAtMost(totalCount)
+        binding.tvProgressCount.text = getString(
+            R.string.learning_progress_format,
+            completedCount,
+            totalCount
+        )
     }
 
-    // ---------------------------------------------------------------------------
-    // Navigation
-    // ---------------------------------------------------------------------------
-
     /**
-     * Opens the full lesson detail as a [LessonDetailBottomSheet].
-     * Registers a dismiss callback so the list and progress header refresh
-     * immediately when the user closes the sheet.
+     * Deep-links directly to a recommended unit (e.g. from Module 1 Assessment results),
+     * filtering to its category, scrolling it into view, and opening its detail sheet once.
      */
-    private fun openLessonDetail(unit: LearningUnit) {
-        val sheet = LessonDetailBottomSheet.newInstance(unit)
-        sheet.onDismissCallback = {
-            // Completion state may have changed — refresh everything
-            applyFilter()
-            updateProgressHeader()
+    fun openRecommendedUnit(unitId: String?, forceResetHistory: Boolean = false) {
+        if (_binding == null) return
+        if (forceResetHistory) {
+            viewModel.resetDeepLinkHistory()
         }
-        sheet.show(childFragmentManager, "lesson_detail")
+        val consumedId = viewModel.consumeDeepLinkUnitId(unitId) ?: return
+        val unit = repository.getUnitById(consumedId) ?: return
+
+        viewModel.setSelectedCategory(unit.category)
+        syncChipWithCategory(unit.category)
+        refreshLearningUi()
+
+        val pos = lessonAdapter.findPositionByUnitId(unit.id)
+        if (pos >= 0) {
+            binding.rvLearningUnits.scrollToPosition(pos)
+        }
+        openLessonDetail(unit)
+    }
+
+    private fun openLessonDetail(unit: LearningUnit) {
+        if (childFragmentManager.findFragmentByTag(TAG_LESSON_DETAIL) != null) return
+        val sheet = LessonDetailBottomSheet.newInstance(unit)
+        sheet.show(childFragmentManager, TAG_LESSON_DETAIL)
     }
 }

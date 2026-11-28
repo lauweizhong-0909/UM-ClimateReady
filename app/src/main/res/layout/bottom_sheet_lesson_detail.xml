@@ -2,6 +2,7 @@
 <androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/bg_light">
@@ -29,10 +30,10 @@
             android:background="@color/climate_green_container"
             android:paddingHorizontal="10dp"
             android:paddingVertical="3dp"
-            android:text="Heavy Rain"
-            android:textColor="@color/climate_green_primary"
+            android:textColor="@color/learning_accent_text"
             android:textSize="11sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="🌧 Heavy Rain" />
 
         <!-- Unit title -->
         <TextView
@@ -40,10 +41,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Unit Title"
             android:textColor="@color/text_primary"
             android:textSize="22sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="Understanding Heavy Rainfall" />
 
         <!-- Divider -->
         <View
@@ -57,7 +58,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="📖  Summary"
+            android:text="@string/learning_section_summary"
             android:textColor="@color/text_primary"
             android:textSize="13sp"
             android:textStyle="bold" />
@@ -68,16 +69,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:lineSpacingMultiplier="1.4"
-            android:text="Summary text"
             android:textColor="@color/text_secondary"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            tools:text="Summary text" />
 
         <!-- Real-World Example card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:cardBackgroundColor="#FFF8E1"
+            app:cardBackgroundColor="@color/learning_example_bg"
             app:cardCornerRadius="10dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/um_gold"
@@ -92,8 +93,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="🌍  Real-World Example"
-                    android:textColor="#795548"
+                    android:text="@string/learning_section_example"
+                    android:textColor="@color/learning_example_title"
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
@@ -103,9 +104,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:lineSpacingMultiplier="1.4"
-                    android:text="Real world example"
-                    android:textColor="#5D4037"
-                    android:textSize="13sp" />
+                    android:textColor="@color/learning_example_body"
+                    android:textSize="13sp"
+                    tools:text="Real world example" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -114,10 +115,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:cardBackgroundColor="@color/climate_green_container"
+            app:cardBackgroundColor="@color/learning_tip_bg"
             app:cardCornerRadius="10dp"
             app:cardElevation="0dp"
-            app:strokeColor="@color/climate_green_light"
+            app:strokeColor="@color/learning_tip_stroke"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -129,8 +130,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="🎓  UM Student Tip"
-                    android:textColor="@color/climate_green_dark"
+                    android:text="@string/learning_section_um_tip"
+                    android:textColor="@color/learning_tip_title"
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
@@ -140,9 +141,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:lineSpacingMultiplier="1.4"
-                    android:text="UM tip"
-                    android:textColor="@color/climate_green_primary"
-                    android:textSize="13sp" />
+                    android:textColor="@color/learning_tip_body"
+                    android:textSize="13sp"
+                    tools:text="UM student tip" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -155,7 +156,7 @@
             app:cardBackgroundColor="@color/card_surface"
             app:cardCornerRadius="12dp"
             app:cardElevation="2dp"
-            app:strokeColor="@color/um_navy"
+            app:strokeColor="@color/learning_kc_accent"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -167,8 +168,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="✅  Knowledge Check"
-                    android:textColor="@color/um_navy"
+                    android:text="@string/learning_section_knowledge_check"
+                    android:textColor="@color/learning_kc_accent"
                     android:textSize="13sp"
                     android:textStyle="bold" />
 
@@ -178,10 +179,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:lineSpacingMultiplier="1.4"
-                    android:text="Question?"
                     android:textColor="@color/text_primary"
                     android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:text="Question?" />
 
                 <!-- Option A -->
                 <com.google.android.material.button.MaterialButton
@@ -191,8 +192,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="start|center_vertical"
-                    android:text="A. Option"
-                    android:textSize="13sp" />
+                    android:textColor="@color/text_primary"
+                    android:textSize="13sp"
+                    app:strokeColor="@color/divider_line"
+                    tools:text="A. Option" />
 
                 <!-- Option B -->
                 <com.google.android.material.button.MaterialButton
@@ -202,8 +205,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:gravity="start|center_vertical"
-                    android:text="B. Option"
-                    android:textSize="13sp" />
+                    android:textColor="@color/text_primary"
+                    android:textSize="13sp"
+                    app:strokeColor="@color/divider_line"
+                    tools:text="B. Option" />
 
                 <!-- Option C -->
                 <com.google.android.material.button.MaterialButton
@@ -213,8 +218,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:gravity="start|center_vertical"
-                    android:text="C. Option"
-                    android:textSize="13sp" />
+                    android:textColor="@color/text_primary"
+                    android:textSize="13sp"
+                    app:strokeColor="@color/divider_line"
+                    tools:text="C. Option" />
 
                 <!-- Option D -->
                 <com.google.android.material.button.MaterialButton
@@ -224,8 +231,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:gravity="start|center_vertical"
-                    android:text="D. Option"
-                    android:textSize="13sp" />
+                    android:textColor="@color/text_primary"
+                    android:textSize="13sp"
+                    app:strokeColor="@color/divider_line"
+                    tools:text="D. Option" />
 
                 <!-- Explanation (hidden until an option is selected) -->
                 <com.google.android.material.card.MaterialCardView
@@ -234,7 +243,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:visibility="gone"
-                    app:cardBackgroundColor="#E3F2FD"
+                    app:cardBackgroundColor="@color/learning_explanation_bg"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="0dp">
 
@@ -244,9 +253,9 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingMultiplier="1.4"
                         android:padding="12dp"
-                        android:text="Explanation"
-                        android:textColor="#0D47A1"
-                        android:textSize="13sp" />
+                        android:textColor="@color/learning_explanation_text"
+                        android:textSize="13sp"
+                        tools:text="Explanation" />
                 </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
@@ -270,7 +279,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="💡  Key Takeaway"
+                    android:text="@string/learning_section_takeaway"
                     android:textColor="@color/um_gold"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -281,9 +290,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:lineSpacingMultiplier="1.4"
-                    android:text="Takeaway"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:text="Takeaway" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -294,7 +303,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:padding="14dp"
-            android:text="Mark as Completed"
+            android:text="@string/learning_btn_mark_complete"
+            android:textColor="@color/white"
             android:textSize="15sp" />
 
     </LinearLayout>

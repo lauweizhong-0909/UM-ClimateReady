@@ -1,5 +1,6 @@
 package com.um.climateready.feature.learning
 
+import android.content.DialogInterface
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,45 +8,45 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.button.MaterialButton
 import com.um.climateready.R
-import com.um.climateready.core.database.AssetDataManager
 import com.um.climateready.core.model.KnowledgeCheck
 import com.um.climateready.core.model.LearningUnit
+import com.um.climateready.core.util.LearningDataHelper
+import com.um.climateready.data.repository.LearningRepository
 import com.um.climateready.databinding.BottomSheetLessonDetailBinding
 
 /**
  * Full-detail BottomSheetDialogFragment for a single Micro-Learning unit.
  *
- * Displays:
- * - Full lesson summary, real-world example, UM student tip
- * - Interactive CCNA-style Knowledge Check with instant green/red colour feedback
- * - Key Takeaway banner
- * - "Mark as Completed" / "Undo" toggle persisted via [AssetDataManager]
- *
- * Usage:
- *   LessonDetailBottomSheet.newInstance(unit).show(childFragmentManager, "lesson_detail")
- *
- * The parent fragment should call [setOnDismissListener] (or override [onDismiss]) to
- * refresh the RecyclerView adapter and progress header after the sheet closes.
+ * Displays lesson content, interactive CCNA-style Knowledge Check (persisting the
+ * selected option across screen rotation), Key Takeaway banner, and "Mark as Completed"
+ * toggle persisted via [LearningRepository]. Emits a Fragment Result upon dismissal so
+ * [LearningFragment] refreshes reliably even after configuration changes.
  */
 class LessonDetailBottomSheet : BottomSheetDialogFragment() {
 
     private var _binding: BottomSheetLessonDetailBinding? = null
     private val binding get() = _binding!!
 
-    // Callback so LearningFragment can refresh UI when the sheet is dismissed
+    private var selectedOptionId: String? = null
+
+    /** Optional legacy callback retained for direct programmatic callers. */
     var onDismissCallback: (() -> Unit)? = null
 
     companion object {
+        const val REQUEST_KEY_LESSON_UPDATED = "request_key_lesson_updated"
         private const val ARG_UNIT_ID = "unit_id"
+        private const val STATE_SELECTED_OPTION_ID = "state_selected_option_id"
 
         fun newInstance(unit: LearningUnit): LessonDetailBottomSheet {
-            val fragment = LessonDetailBottomSheet()
-            fragment.arguments = Bundle().apply {
-                putString(ARG_UNIT_ID, unit.id)
+            return LessonDetailBottomSheet().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_UNIT_ID, unit.id)
+                }
             }
-            return fragment
         }
     }
 
@@ -61,18 +62,30 @@ class LessonDetailBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val unitId = arguments?.getString(ARG_UNIT_ID) ?: return
-        val dataManager = AssetDataManager.getInstance(requireContext())
-        val unit = dataManager.learningUnits.find { it.id == unitId } ?: return
+        selectedOptionId = savedInstanceState?.getString(STATE_SELECTED_OPTION_ID)
+
+        val unitId = arguments?.getString(ARG_UNIT_ID)
+        val repository = LearningRepository(requireContext())
+        val unit = repository.getUnitById(unitId)
+        if (unit == null) {
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.learning_error_unit_not_found),
+                Toast.LENGTH_SHORT
+            ).show()
+            dismissAllowingStateLoss()
+            return
+        }
 
         bindLessonContent(unit)
         bindKnowledgeCheck(unit.knowledgeCheck)
-        bindCompleteButton(unit, dataManager)
+        bindCompleteButton(unit, repository)
     }
 
-    // ---------------------------------------------------------------------------
-    // Binding helpers
-    // ---------------------------------------------------------------------------
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        selectedOptionId?.let { outState.putString(STATE_SELECTED_OPTION_ID, it) }
+    }
 
     private fun bindLessonContent(unit: LearningUnit) {
         with(binding) {
@@ -86,106 +99,108 @@ class LessonDetailBottomSheet : BottomSheetDialogFragment() {
     }
 
     private fun bindKnowledgeCheck(kc: KnowledgeCheck?) {
-        if (kc == null) {
+        if (kc == null || kc.options.isEmpty()) {
             binding.cardKnowledgeCheck.visibility = View.GONE
             return
         }
 
+        binding.cardKnowledgeCheck.visibility = View.VISIBLE
         with(binding) {
             tvKcQuestion.text = kc.question
 
-            // Map the 4 options (A, B, C, D) to the 4 buttons
             val optionButtons = listOf(btnOptionA, btnOptionB, btnOptionC, btnOptionD)
-            kc.options.forEachIndexed { index, option ->
-                if (index < optionButtons.size) {
-                    val btn = optionButtons[index]
-                    btn.text = "${option.id}. ${option.text}"
-                    btn.tag = option.id      // store option ID in tag for click handler
-
+            optionButtons.forEachIndexed { index, btn ->
+                val option = kc.options.getOrNull(index)
+                if (option == null) {
+                    btn.visibility = View.GONE
+                } else {
+                    btn.visibility = View.VISIBLE
+                    btn.isEnabled = true
+                    btn.text = getString(R.string.learning_option_format, option.id, option.text)
+                    btn.tag = option.id
                     btn.setOnClickListener { clickedBtn ->
-                        val selectedId = clickedBtn.tag as String
-                        onOptionSelected(selectedId, kc, optionButtons)
+                        val chosenId = clickedBtn.tag as? String ?: return@setOnClickListener
+                        onOptionSelected(chosenId, kc, optionButtons)
                     }
                 }
+            }
+
+            // Restore prior answer state after screen rotation
+            val restoredId = selectedOptionId
+            if (!restoredId.isNullOrBlank()) {
+                onOptionSelected(restoredId, kc, optionButtons)
             }
         }
     }
 
-    /**
-     * Called when the student taps a knowledge-check option.
-     * Immediately highlights the tapped button (green if correct, red if wrong),
-     * always highlights the correct button green, disables all buttons, and
-     * reveals the explanation.
-     */
     private fun onOptionSelected(
         selectedId: String,
         kc: KnowledgeCheck,
-        buttons: List<com.google.android.material.button.MaterialButton>
+        buttons: List<MaterialButton>
     ) {
+        selectedOptionId = selectedId
         val ctx = requireContext()
-        val correctGreen = ContextCompat.getColor(ctx, R.color.score_green)
-        val incorrectRed = ContextCompat.getColor(ctx, R.color.score_red)
+        val correctGreen = ContextCompat.getColor(ctx, R.color.learning_answer_correct_bg)
+        val incorrectRed = ContextCompat.getColor(ctx, R.color.learning_answer_wrong_bg)
         val white = ContextCompat.getColor(ctx, R.color.white)
 
-        buttons.forEach { btn ->
-            btn.isEnabled = false   // lock all buttons — no re-answering
+        buttons.filter { it.isVisible }.forEach { btn ->
+            btn.isEnabled = false
 
-            val optionId = btn.tag as String
+            val optionId = btn.tag as? String
             when {
                 optionId == kc.correctOptionId -> {
-                    // Always highlight correct answer green
                     btn.backgroundTintList = ColorStateList.valueOf(correctGreen)
                     btn.setTextColor(white)
+                    btn.strokeWidth = 0
                 }
                 optionId == selectedId -> {
-                    // Wrong answer tapped — highlight red
                     btn.backgroundTintList = ColorStateList.valueOf(incorrectRed)
                     btn.setTextColor(white)
+                    btn.strokeWidth = 0
                 }
-                // Other buttons fade visually (keep default tint, just disabled)
             }
         }
 
-        // Reveal explanation
         binding.cardExplanation.visibility = View.VISIBLE
         binding.tvKcExplanation.text = kc.explanation
     }
 
-    private fun bindCompleteButton(unit: LearningUnit, dataManager: AssetDataManager) {
+    private fun bindCompleteButton(unit: LearningUnit, repository: LearningRepository) {
         updateCompleteButtonState(unit.isCompleted)
 
         binding.btnMarkComplete.setOnClickListener {
             val newState = !unit.isCompleted
-            dataManager.setUnitCompleted(unit.id, newState)
+            repository.toggleCompletion(unit.id, newState)
             unit.isCompleted = newState
             updateCompleteButtonState(newState)
 
             val message = if (newState) {
-                "✓ \"${unit.title}\" marked as completed!"
+                getString(R.string.learning_toast_completed, unit.title)
             } else {
-                "\"${unit.title}\" marked as incomplete."
+                getString(R.string.learning_toast_incomplete, unit.title)
             }
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun updateCompleteButtonState(isCompleted: Boolean) {
+        val ctx = requireContext()
         with(binding.btnMarkComplete) {
+            setTextColor(ContextCompat.getColor(ctx, R.color.white))
             if (isCompleted) {
-                text = "✓  Completed — Undo"
-                val grey = ContextCompat.getColorStateList(requireContext(), R.color.score_green)
-                backgroundTintList = grey
+                text = getString(R.string.learning_btn_completed_undo)
+                backgroundTintList = ContextCompat.getColorStateList(ctx, R.color.learning_complete_bg)
             } else {
-                text = "Mark as Completed"
-                backgroundTintList = ContextCompat.getColorStateList(
-                    requireContext(), com.google.android.material.R.color.m3_button_background_color_selector
-                )
+                text = getString(R.string.learning_btn_mark_complete)
+                backgroundTintList = ContextCompat.getColorStateList(ctx, R.color.learning_incomplete_bg)
             }
         }
     }
 
-    override fun onDismiss(dialog: android.content.DialogInterface) {
+    override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
+        parentFragmentManager.setFragmentResult(REQUEST_KEY_LESSON_UPDATED, Bundle.EMPTY)
         onDismissCallback?.invoke()
     }
 
@@ -194,14 +209,10 @@ class LessonDetailBottomSheet : BottomSheetDialogFragment() {
         _binding = null
     }
 
-    // ---------------------------------------------------------------------------
-    // Helpers
-    // ---------------------------------------------------------------------------
-
     private fun categoryLabel(category: String): String = when (category) {
-        "HEAVY_RAIN"       -> "🌧 Heavy Rain"
-        "EXTREME_HEAT"     -> "☀ Extreme Heat"
-        "HAZE_AIR_QUALITY" -> "🌫 Haze & AQI"
-        else               -> category
+        LearningDataHelper.CATEGORY_HEAVY_RAIN -> getString(R.string.learning_category_rain)
+        LearningDataHelper.CATEGORY_EXTREME_HEAT -> getString(R.string.learning_category_heat)
+        LearningDataHelper.CATEGORY_HAZE -> getString(R.string.learning_category_haze)
+        else -> category
     }
 }

@@ -69,15 +69,20 @@ class HomeFragment : Fragment() {
 
     private fun updateDashboardUI() {
         if (_binding == null) return
-
         // --- 1. Learning Progress Card ---
-        val completedCount = learningRepository.getCompletedCount()
+        val totalCount = learningRepository.getTotalUnitCount().let { if (it > 0) it else 12 }
+        val completedCount = learningRepository.getCompletedCount().coerceAtMost(totalCount)
+        binding.progressLearning.max = totalCount
         binding.progressLearning.progress = completedCount
-        binding.tvLearningProgressText.text = "$completedCount of 12 units completed"
-        binding.btnViewLessons.text = if (completedCount > 0) {
-            getString(R.string.home_btn_resume_learning)
-        } else {
-            "Start Micro-Learning"
+        binding.tvLearningProgressText.text = getString(
+            R.string.home_learning_progress_format,
+            completedCount,
+            totalCount
+        )
+        binding.btnViewLessons.text = when {
+            completedCount <= 0 -> getString(R.string.home_btn_start_learning)
+            completedCount >= totalCount -> getString(R.string.home_btn_review_lessons)
+            else -> getString(R.string.home_btn_resume_learning)
         }
 
         // --- 2. Assessment Status & Post-Test Unlock ---
@@ -146,7 +151,7 @@ class HomeFragment : Fragment() {
 
             // Case D: Not Assessed Yet
             else -> {
-                binding.tvAssessmentScoreBadge.text = "Not Assessed"
+                binding.tvAssessmentScoreBadge.text = getString(R.string.home_assessment_not_assessed)
                 binding.tvAssessmentScoreBadge.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_secondary))
                 binding.tvAssessmentScoreBadge.backgroundTintList = ColorStateList.valueOf(
                     ContextCompat.getColor(requireContext(), R.color.divider_line)

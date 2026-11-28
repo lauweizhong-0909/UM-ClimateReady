@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    
+
     <!-- UM Brand & Climate Colors -->
     <color name="um_navy">#002B49</color>
     <color name="um_gold">#FDB913</color>
@@ -10,7 +10,7 @@
     <color name="climate_green_light">#4C8C4A</color>
     <color name="climate_green_dark">#003300</color>
     <color name="climate_green_container">#E8F5E9</color>
-    
+
     <!-- Status & Scoring Bands -->
     <color name="score_red">#D32F2F</color>
     <color name="score_red_container">#FFEBEE</color>
@@ -18,7 +18,7 @@
     <color name="score_yellow_container">#FFFDE7</color>
     <color name="score_green">#2E7D32</color>
     <color name="score_green_container">#E8F5E9</color>
-    
+
     <!-- Neutrals & Backgrounds -->
     <color name="bg_light">#F8FAF8</color>
     <color name="card_surface">#FFFFFF</color>
@@ -27,4 +27,22 @@
     <color name="text_tertiary">#79747E</color>
     <color name="divider_line">#E0E0E0</color>
     <color name="teal_stat">#00695C</color>
+
+    <!-- Module 2 Micro-Learning Semantic Tokens -->
+    <color name="learning_accent_text">#1B5E20</color>
+    <color name="learning_unit_badge_bg">#1B5E20</color>
+    <color name="learning_example_bg">#FFF8E1</color>
+    <color name="learning_example_title">#795548</color>
+    <color name="learning_example_body">#5D4037</color>
+    <color name="learning_tip_bg">#E8F5E9</color>
+    <color name="learning_tip_title">#003300</color>
+    <color name="learning_tip_body">#1B5E20</color>
+    <color name="learning_tip_stroke">#4C8C4A</color>
+    <color name="learning_kc_accent">#002B49</color>
+    <color name="learning_explanation_bg">#E3F2FD</color>
+    <color name="learning_explanation_text">#0D47A1</color>
+    <color name="learning_answer_correct_bg">#2E7D32</color>
+    <color name="learning_answer_wrong_bg">#D32F2F</color>
+    <color name="learning_complete_bg">#2E7D32</color>
+    <color name="learning_incomplete_bg">#1B5E20</color>
 </resources>
