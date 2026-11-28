@@ -60,6 +60,8 @@ class HomeFragment : Fragment() {
         binding.cardEnvStatus.setOnClickListener {
             (activity as? MainActivity)?.switchTab(R.id.navigation_explorer)
         }
+
+        updateDashboardUI()
     }
 
     override fun onResume() {

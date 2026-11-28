@@ -50,35 +50,15 @@ class MainActivity : AppCompatActivity() {
 
         // Setup BottomNavigationView (5 Tabs: Home, Learn, AI Quiz, Explorer, Directory)
         binding.bottomNavigation.setOnItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.navigation_home -> {
-                    replaceFragment(HomeFragment())
-                    true
-                }
-                R.id.navigation_learning -> {
-                    val unitId = pendingRecommendedUnitId
-                    pendingRecommendedUnitId = null
-                    replaceFragment(LearningFragment.newInstance(unitId))
-                    true
-                }
-                R.id.navigation_quiz -> {
-                    replaceFragment(QuizFragment())
-                    true
-                }
-                R.id.navigation_explorer -> {
-                    replaceFragment(ExplorerFragment())
-                    true
-                }
-                R.id.navigation_resources -> {
-                    replaceFragment(ResourcesFragment())
-                    true
-                }
-                else -> false
-            }
+            loadFragmentForTab(menuItem.itemId)
         }
 
         // Avoid recreating the active tab on re-tap; forward deep-link if Learning is already active
         binding.bottomNavigation.setOnItemReselectedListener { menuItem ->
+            if (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) == null) {
+                loadFragmentForTab(menuItem.itemId)
+                return@setOnItemReselectedListener
+            }
             if (menuItem.itemId == R.id.navigation_learning) {
                 val unitId = pendingRecommendedUnitId
                 if (!unitId.isNullOrBlank()) {
@@ -89,11 +69,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Set default fragment on first launch
+        // Explicitly load the initial fragment so default selection on Home isn't swallowed as a reselection
         if (savedInstanceState == null) {
             pendingRecommendedUnitId = consumeRecommendedUnitExtra(intent)
-            val targetTab = intent.getIntExtra(EXTRA_TARGET_TAB, R.id.navigation_home)
-            binding.bottomNavigation.selectedItemId = targetTab
+            val requestedTab = intent.getIntExtra(EXTRA_TARGET_TAB, R.id.navigation_home)
+            val targetTab = if (loadFragmentForTab(requestedTab)) {
+                requestedTab
+            } else {
+                loadFragmentForTab(R.id.navigation_home)
+                R.id.navigation_home
+            }
+            binding.bottomNavigation.menu.findItem(targetTab)?.isChecked = true
         }
     }
 
@@ -103,11 +89,15 @@ class MainActivity : AppCompatActivity() {
         pendingRecommendedUnitId = consumeRecommendedUnitExtra(intent)
         val targetTab = intent.getIntExtra(EXTRA_TARGET_TAB, -1)
         if (targetTab != -1) {
-            if (binding.bottomNavigation.selectedItemId == targetTab && targetTab == R.id.navigation_learning) {
-                val unitId = pendingRecommendedUnitId
-                pendingRecommendedUnitId = null
-                val current = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as? LearningFragment
-                current?.openRecommendedUnit(unitId, forceResetHistory = true)
+            if (binding.bottomNavigation.selectedItemId == targetTab) {
+                if (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) == null) {
+                    loadFragmentForTab(targetTab)
+                } else if (targetTab == R.id.navigation_learning) {
+                    val unitId = pendingRecommendedUnitId
+                    pendingRecommendedUnitId = null
+                    val current = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as? LearningFragment
+                    current?.openRecommendedUnit(unitId, forceResetHistory = true)
+                }
             } else {
                 switchTab(targetTab)
             }
@@ -116,6 +106,23 @@ class MainActivity : AppCompatActivity() {
 
     fun switchTab(menuItemId: Int) {
         binding.bottomNavigation.selectedItemId = menuItemId
+    }
+
+    private fun loadFragmentForTab(menuItemId: Int): Boolean {
+        val fragment = when (menuItemId) {
+            R.id.navigation_home -> HomeFragment()
+            R.id.navigation_learning -> {
+                val unitId = pendingRecommendedUnitId
+                pendingRecommendedUnitId = null
+                LearningFragment.newInstance(unitId)
+            }
+            R.id.navigation_quiz -> QuizFragment()
+            R.id.navigation_explorer -> ExplorerFragment()
+            R.id.navigation_resources -> ResourcesFragment()
+            else -> return false
+        }
+        replaceFragment(fragment)
+        return true
     }
 
     private fun consumeRecommendedUnitExtra(intent: Intent?): String? {
